@@ -9,6 +9,9 @@ However, as time goes on, I will add more features.
 
 All bugs and issues should be refered to the common-bugs.txt either here in this repository or in the application.
 
+## Preview
+![a](https://github.com/Noonc/Noon-Video-Downloader/blob/master/Preview.jpg)
+
 ## Installation
 - Navigate to the releases page or use this link [here](https://github.com/Noonc/Noon-Video-Downloader/releases)
 - Download the latest zip.
@@ -55,6 +58,4 @@ Be careful not to mess up the layout of the document, not removing any character
 If the value is set to "true" no caps, then that feature will be enabled, anything else will act as "false" (Eg. "a", "false" "no")
 Currently that is the only way to change the config. (Subject to change next update)
 
-## Preview
-![a](https://github.com/Noonc/Noon-Video-Downloader/blob/master/Preview.jpg)
 
