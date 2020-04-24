@@ -7,7 +7,7 @@
 - Fix playlist download output folder bug (can't have spaces in output directory)
 - Update Preview.jpg upon new release
 - Update README.md - Config Editor and Formats
-- Occasional Freezes?
+- Fix Freezing and Stuttering
 
 ## Remove
 - Remove unnecessary console logs
