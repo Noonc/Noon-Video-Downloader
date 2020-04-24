@@ -10,7 +10,10 @@ However, as time goes on, I will add more features.
 All bugs and issues should be refered to the common-bugs.txt either here in this repository or in the application.
 
 ## Installation
-Navigate to the releases page or use this link [here](https://github.com/Noonc/Noon-Video-Downloader/releases)
+- Navigate to the releases page or use this link [here](https://github.com/Noonc/Noon-Video-Downloader/releases)
+- Download the latest zip.
+- Open with Winrar, 7Zip or extract onto computer.
+- Then run "setup.exe"
 
 ## Usage
 ```
