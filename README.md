@@ -9,7 +9,7 @@ However, as time goes on, I will add more features.
 
 All bugs and issues should be refered to the common-bugs.txt either here in this repository or in the application.
 
-##Installion
+##Installation
 Navigate to the releases page or use this link [here](https://github.com/Noonc/Noon-Video-Downloader/releases)
 
 ## Usage
