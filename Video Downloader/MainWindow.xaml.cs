@@ -87,7 +87,7 @@ namespace Video_Downloader
             var fileLOG = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\logs\");
             Console.WriteLine("[VDDL] Checking for all required files...");
             vrs_lbl.Content = "5.8.9";
-            if (Directory.Exists(filePath) & Directory.Exists(fileLOG) & File.Exists(filePath + @"\youtube-dl.exe") & File.Exists(filePath + @"\ffmpeg.exe") & File.Exists(filePath + @"\common-bugs.txt") & File.Exists(filePath + @"\readme.txt"))
+            if (Directory.Exists(filePath) & Directory.Exists(fileLOG) & File.Exists(filePath + @"\youtube-dl.exe") & File.Exists(filePath + @"\ffmpeg.exe") & File.Exists(filePath + @"\common-bugs.txt"))
             {
                 Console.WriteLine("[VDDL] All Necessary Files Found...");
                 InitializeDebug();
@@ -161,7 +161,6 @@ namespace Video_Downloader
             {
                 var pathWithEnv = @"%USERPROFILE%\Appdata\roaming";
                 var filePath = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl");
-                string readMe = filePath + @"\readme.txt";
                 string fileame = filePath + @"\common-bugs.txt";
                 if (!Directory.Exists(filePath) || !File.Exists(filePath + @"\youtube-dl.exe") || !File.Exists(filePath + @"\ffmpeg.exe") || !File.Exists(filePath + @"\phantomjs.exe"))
                 {
@@ -236,30 +235,7 @@ namespace Video_Downloader
                     Console.WriteLine("[VDDL] Log Directory Created...");
                     InitializeFinal();
                 }
-                if (!File.Exists(readMe))
-                {
-                    File.AppendAllText(readMe, "Thank you for using my program. \n" +
-                        "This is a video/media downloader that utilizes the youtube-dl libraries. \n" +
-                        "All you have to do is input the url in the top textboxt then select an ouput. \n" +
-                        "There are other options like cookies for privated links, \n and format options like MP3 (Only current format). \n" +
-                        "\n" +
-                        "If you have multiple links to download (like a series) or an album, you can use the batch list. \n" +
-                        "If you have a youtube playlist, you can just use that url in the normal textbox. \n" +
-                        "However, if you have multiple single links, you can use the right textbox and the add button. \n" +
-                        "This will your link to the list and you will see the light red box fill up. \n" +
-                        "If you are using a vpn, upon launch you will be 'notified' of your current IP. \nThis has only been tested with NordVPN, however. \n" +
-                        "You will also be notified if a vpn is detected. \nIf your vpn uses a local IP starting with 10, it will 'detect' a vpn. \n" +
-                        "Any bugs or errors can first be refered to the common-bugs.txt, \n a shortcut to that exists at the bottom of the window. \n" +
-                        "Any 'Error:' messages without the prefix '[VDDL]' should be researched according to youtube-dl. \n" +
-                        "To access the config file, navigate to your install directory. \n" +
-                        "Find the file 'Video Downloader.dll.config' and edit it with notepad or any other text editor. \n" +
-                        "Be careful not to mess up the layout of the document, not removing any characters. \n" +
-                        "To turn on either Autolog or Check-IP, just make sure they are equal to 'true' no caps. \n" +
-                        "Otherwise anything else with act as 'false'. \n" +
-                        "Currently that is the only way to change the config");
-                    InitializeFinal();
 
-                }
             }
         }
 
@@ -802,9 +778,7 @@ namespace Video_Downloader
             var pathWithEnv = @"%USERPROFILE%\Appdata\roaming";
             var filePath = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl");
             var commonbugsTXT = filePath + @"\common-bugs.txt";
-            var readmeTXT = filePath + @"\readme.txt";
             File.Delete(commonbugsTXT);
-            File.Delete(readmeTXT);
             Console.WriteLine("[VDDL] Calling Downloader...");
             InitializeDownload();
 
