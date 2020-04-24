@@ -66,15 +66,15 @@ namespace Video_Downloader
             }
             string GetIp = new WebClient().DownloadString("http://icanhazip.com");
             var Host = Dns.GetHostEntry(Dns.GetHostName());
-            Console.WriteLine("[YDDL] Current Public IP: " + GetIp + "[YDDL] Current Local IP: " + localIP);
+            Console.WriteLine("[VDDL] Current Public IP: " + GetIp + "[VDDL] Current Local IP: " + localIP);
             if (localIP.StartsWith("10"))
             {
-                Console.WriteLine("[YDDL] Possible VPN Detected...");
+                Console.WriteLine("[VDDL] Possible VPN Detected...");
                 vpn_lbl.Content = "VPN Enabled?";
             }
             else
             {
-                Console.WriteLine("[YDDL] No VPN Detected...");
+                Console.WriteLine("[VDDL] No VPN Detected...");
                 vpn_lbl.Content = "VPN Disabled?";
             }
             
@@ -85,16 +85,16 @@ namespace Video_Downloader
             var pathWithEnv = @"%USERPROFILE%\Appdata\roaming";
             var filePath = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl");
             var fileLOG = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\logs\");
-            Console.WriteLine("[YDDL] Checking for all required files...");
+            Console.WriteLine("[VDDL] Checking for all required files...");
             vrs_lbl.Content = "5.8.9";
             if (Directory.Exists(filePath) & Directory.Exists(fileLOG) & File.Exists(filePath + @"\youtube-dl.exe") & File.Exists(filePath + @"\ffmpeg.exe") & File.Exists(filePath + @"\common-bugs.txt") & File.Exists(filePath + @"\readme.txt"))
             {
-                Console.WriteLine("[YDDL] All Necessary Files Found...");
+                Console.WriteLine("[VDDL] All Necessary Files Found...");
                 InitializeDebug();
             }
             else
             {
-                Console.WriteLine("[YDDL] Some or all files not found... \n[YDDL] Initializing Repair...");
+                Console.WriteLine("[VDDL] Some or all files not found... \n[VDDL] Initializing Repair...");
                 InitializeDownload();
             }
 
@@ -119,7 +119,7 @@ namespace Video_Downloader
            
             _writer = new TextBoxStreamWriter(txtConsole);
             Console.SetOut(_writer);
-            Console.WriteLine("[YDDL] Initalizing Start...");
+            Console.WriteLine("[VDDL] Initalizing Start...");
             InitializeCFG();
         }
 
@@ -165,12 +165,12 @@ namespace Video_Downloader
                 string fileame = filePath + @"\common-bugs.txt";
                 if (!Directory.Exists(filePath) || !File.Exists(filePath + @"\youtube-dl.exe") || !File.Exists(filePath + @"\ffmpeg.exe") || !File.Exists(filePath + @"\phantomjs.exe"))
                 {
-                    Console.WriteLine("[YDDL] Executing First Time Setup...");
+                    Console.WriteLine("[VDDL] Executing First Time Setup...");
                     Directory.CreateDirectory(filePath);
                     webClient.DownloadFile("https://yt-dl.org/latest/youtube-dl.exe", filePath + "/youtube-dl.exe");
                     webClient.DownloadFile("https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-latest-win64-static.zip", filePath + "/ffmpeg.zip");
                     webClient.DownloadFile("https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-windows.zip", filePath + "/phantomjs.zip");
-                    Console.Write("[YDDL] Download Complete \n[YDDL] Moving files to Correct Path...");
+                    Console.Write("[VDDL] Download Complete \n[VDDL] Moving files to Correct Path...");
                     ZipFile.ExtractToDirectory(filePath + "/ffmpeg.zip", filePath);
                     ZipFile.ExtractToDirectory(filePath + "/phantomjs.zip", filePath);
                     File.Delete(filePath + "/ffmpeg.zip");
@@ -198,7 +198,7 @@ namespace Video_Downloader
                     string PJzipfolder = filePath + "/phantomjs-2.1.1-windows";
                     Directory.Delete(ffzipfolder, true);
                     Directory.Delete(PJzipfolder, true);
-                    Console.WriteLine("\n[YDDL] Install Complete... ");
+                    Console.WriteLine("\n[VDDL] Install Complete... ");
                     InitializeFinal();
                 }
                 if (!File.Exists(fileame))
@@ -206,7 +206,7 @@ namespace Video_Downloader
                     File.AppendAllText(fileame, "These are the common-bugs of the downloader. \n" +
                         "If a download fails please reference this in your troubleshooting, " +
                         "\nor search yt-dl (youtube-dl) and your problem/error online. \n" +
-                        "Please note any console message without the prefix '[YDDL]' is all youtube-dl. \n" +
+                        "Please note any console message without the prefix '[VDDL]' is all youtube-dl. \n" +
                         "Therefore any error's or bugs should be researched based off of youtube-dl libraries and resources. \n" +
                         "If your file does not show up in your selected output, check the Console Window for any error messages. \n" +
                         "If the downloader is unable to extract the title your cookie file is invalid. Simply create a new one and reload it." +
@@ -221,19 +221,19 @@ namespace Video_Downloader
                         "Sadly currently the ouput folder cannot have spaces in them, instead changed them later.   ");
                     if (File.Exists(fileame))
                     {
-                        Console.WriteLine("[YDDL] All Debug TXT's Created...");
+                        Console.WriteLine("[VDDL] All Debug TXT's Created...");
                         InitializeFinal();
                     }
                     else
                     {
-                        Console.WriteLine("[YDDL] Debug TXT's Failed to Create...");
+                        Console.WriteLine("[VDDL] Debug TXT's Failed to Create...");
                     }
                 }
                 var fileLOG = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\logs\");
                 if (!Directory.Exists(fileLOG))
                 {
                     Directory.CreateDirectory(fileLOG);
-                    Console.WriteLine("[YDDL] Log Directory Created...");
+                    Console.WriteLine("[VDDL] Log Directory Created...");
                     InitializeFinal();
                 }
                 if (!File.Exists(readMe))
@@ -250,7 +250,7 @@ namespace Video_Downloader
                         "If you are using a vpn, upon launch you will be 'notified' of your current IP. \nThis has only been tested with NordVPN, however. \n" +
                         "You will also be notified if a vpn is detected. \nIf your vpn uses a local IP starting with 10, it will 'detect' a vpn. \n" +
                         "Any bugs or errors can first be refered to the common-bugs.txt, \n a shortcut to that exists at the bottom of the window. \n" +
-                        "Any 'Error:' messages without the prefix '[YDDL]' should be researched according to youtube-dl. \n" +
+                        "Any 'Error:' messages without the prefix '[VDDL]' should be researched according to youtube-dl. \n" +
                         "To access the config file, navigate to your install directory. \n" +
                         "Find the file 'Video Downloader.dll.config' and edit it with notepad or any other text editor. \n" +
                         "Be careful not to mess up the layout of the document, not removing any characters. \n" +
@@ -265,7 +265,7 @@ namespace Video_Downloader
 
         public void InitializeDebug()
         {
-            Console.WriteLine("[YDDL] Starting Routine Debug...");
+            Console.WriteLine("[VDDL] Starting Routine Debug...");
             //var pathWithEnv = @"%USERPROFILE%\Appdata\roaming";
             //var filePath = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\");
             //string fileName = filePath + "common-bugs.txt";
@@ -281,7 +281,7 @@ namespace Video_Downloader
             //        Console.WriteLine("Debug TXT's Failed to Create...");
             //    }
             //}
-            Console.WriteLine("[YDDL] Checking for Youtube-DL Update...");
+            Console.WriteLine("[VDDL] Checking for Youtube-DL Update...");
             Process update = new Process();
             update.StartInfo.FileName = cmdlab.Text;
             update.StartInfo.Arguments = "--update";
@@ -323,7 +323,7 @@ namespace Video_Downloader
                 }
                 else
                 {
-                    Console.WriteLine("[YDDL] No VPN Detected, Canceling Download!...");
+                    Console.WriteLine("[VDDL] No VPN Detected, Canceling Download!...");
                 }
             }
             else
@@ -339,8 +339,8 @@ namespace Video_Downloader
             string URL = tb_URL.Text;
             if (output == "")
             {
-                Console.WriteLine("[YDDL] No Output Directory Found...");
-                MessageBox.Show("[YDDL] Please Select an Output Location");
+                Console.WriteLine("[VDDL] No Output Directory Found...");
+                MessageBox.Show("[VDDL] Please Select an Output Location");
                 return;
             }
             if (mp3_check.IsChecked ?? true)
@@ -348,7 +348,7 @@ namespace Video_Downloader
                 if (cookie != "")
                 {
                     string ALL = System.IO.Path.Combine(cmdFull + " --format mp3" + " --cookies " + cookie + " --output " + output + " " + URL);
-                    Console.WriteLine("[YDDL] Executing Command: " + ALL);
+                    Console.WriteLine("[VDDL] Executing Command: " + ALL);
                     Process p = new Process();
                     p.StartInfo.FileName = cmdFull;
                     p.StartInfo.Arguments = "-x --audio-format mp3" + " --cookies " + cookie + " --output " + output + " " + URL;
@@ -368,7 +368,7 @@ namespace Video_Downloader
                 {
                     //-x --audio-format
                     string Mp3a = System.IO.Path.Combine(cmdFull + " --format mp3" + " --output " + output + " " + URL);
-                    Console.WriteLine("[YDDL] Executing Command: " + Mp3a);
+                    Console.WriteLine("[VDDL] Executing Command: " + Mp3a);
                     Process pa = new Process();
                     pa.StartInfo.FileName = cmdFull;
                     pa.StartInfo.Arguments = "-x --audio-format mp3" + " --output " + output + " " + URL;
@@ -388,7 +388,7 @@ namespace Video_Downloader
             else if (cookie != "")
             {
                 string CookOut = System.IO.Path.Combine(cmdFull + " --cookies " + cookie + " --output " + output + " " + URL);
-                Console.WriteLine("[YDDL] Executing Command: " + CookOut);
+                Console.WriteLine("[VDDL] Executing Command: " + CookOut);
                 Process pas = new Process();
                 pas.StartInfo.FileName = cmdFull;
                 pas.StartInfo.Arguments = "--cookies " + cookie + " --output " + output + " " + URL;
@@ -407,7 +407,7 @@ namespace Video_Downloader
             else
             {
                 string Out = System.IO.Path.Combine(cmdFull + " --output " + output + " " + URL);
-                Console.WriteLine("[YDDL] Executing Command: " + Out);
+                Console.WriteLine("[VDDL] Executing Command: " + Out);
                 Process pass = new Process();
                 pass.StartInfo.FileName = cmdFull;
                 pass.StartInfo.Arguments = "--output " + output + " " + URL;
@@ -446,8 +446,8 @@ namespace Video_Downloader
             new Action(
             delegate ()
             {
-                Console.WriteLine("[YDDL] DOWNLOAD COMPLETE...");
-                Console.WriteLine("\n[YDDL] CHECK OUTPUT DIRECTORY...");
+                Console.WriteLine("[VDDL] DOWNLOAD COMPLETE...");
+                Console.WriteLine("\n[VDDL] CHECK OUTPUT DIRECTORY...");
                 txtConsole.ScrollToEnd();
             }));
         }
@@ -476,7 +476,7 @@ namespace Video_Downloader
                 textOutputF.Text = folddl.SelectedPath;
                 out_lb.Content = folddl.SelectedPath;
                 string textO = textOutput.Text;
-                Console.WriteLine(@"[YDDL] Output Location Selected: """ + textO + @"""...");
+                Console.WriteLine(@"[VDDL] Output Location Selected: """ + textO + @"""...");
                 textOutput.Text = textO + @"\%(title)s.%(ext)s ";
             }
 
@@ -492,7 +492,7 @@ namespace Video_Downloader
             {
                 textCookie.Text = openFileDialog.FileName;
                 string textC = textCookie.Text;
-                Console.WriteLine(@"[YDDL] Cookie File Selected: """ + textC + @"""...");
+                Console.WriteLine(@"[VDDL] Cookie File Selected: """ + textC + @"""...");
                 CookieDir.Content = textC;
             }
         }
@@ -503,16 +503,16 @@ namespace Video_Downloader
 
             if (Directory.Exists(outa))
             {
-                Console.WriteLine("[YDDL] Opening Output Location: " + @"""" + outa + @"""...");
+                Console.WriteLine("[VDDL] Opening Output Location: " + @"""" + outa + @"""...");
                 Process.Start("explorer.exe", outa);
             }
             else if (String.IsNullOrEmpty(textOutputF.Text))
             {
-                Console.WriteLine("[YDDL] No Directory Selected!");
+                Console.WriteLine("[VDDL] No Directory Selected!");
             }
             else
             {
-                Console.WriteLine(string.Format("[YDDL] Directory does not exist!", outa));
+                Console.WriteLine(string.Format("[VDDL] Directory does not exist!", outa));
             }
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -539,14 +539,14 @@ namespace Video_Downloader
             var fileTXT = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\logs\");
             string fileName = fileTXT + dateTime + ".txt";
             File.AppendAllText(fileName, txtConsole.Text);
-            Console.WriteLine("[YDDL] Creating Log File at: " + fileName);
+            Console.WriteLine("[VDDL] Creating Log File at: " + fileName);
             //if (!Directory.Exists(fileTXT))
             //{
             //    Directory.CreateDirectory(fileTXT);
             //}
             if (!File.Exists(fileName))
             {
-                Console.WriteLine("[YDDL] Log Creation Failed...");
+                Console.WriteLine("[VDDL] Log Creation Failed...");
             }
         }
 
@@ -556,12 +556,12 @@ namespace Video_Downloader
             var fileTXT = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\logs\");
             if (Directory.Exists(fileTXT))
             {
-                Console.WriteLine("[YDDL] Opening Logs Location: " + fileTXT + "...");
+                Console.WriteLine("[VDDL] Opening Logs Location: " + fileTXT + "...");
                 Process.Start("explorer.exe", fileTXT);
             }
             else
             {
-                Console.WriteLine("[YDDL] Log Directory does not exist! Perhaps it moved?");
+                Console.WriteLine("[VDDL] Log Directory does not exist! Perhaps it moved?");
             }
         }
 
@@ -571,12 +571,12 @@ namespace Video_Downloader
             var fileTXT = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\common-bugs.txt");
             if (File.Exists(fileTXT))
             {
-                Console.WriteLine("[YDDL] Opening Bug/Error TXT Location: " + fileTXT + "...");
+                Console.WriteLine("[VDDL] Opening Bug/Error TXT Location: " + fileTXT + "...");
                 Process.Start("notepad.exe", fileTXT);
             }
             else
             {
-                Console.WriteLine("[YDDL] Bug/Error file does not exist! Perhaps it moved?");
+                Console.WriteLine("[VDDL] Bug/Error file does not exist! Perhaps it moved?");
             }
         }
 
@@ -586,12 +586,12 @@ namespace Video_Downloader
             var fileTXT = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\");
             if (Directory.Exists(fileTXT))
             {
-                Console.WriteLine("[YDDL] Opening Program Location at: " + fileTXT + "...");
+                Console.WriteLine("[VDDL] Opening Program Location at: " + fileTXT + "...");
                 Process.Start("explorer.exe", fileTXT);
             }
             else
             {
-                Console.WriteLine("[YDDL] Error While Attempting to Open Program Location...");
+                Console.WriteLine("[VDDL] Error While Attempting to Open Program Location...");
             }
         }
         public int ount;
@@ -647,7 +647,7 @@ namespace Video_Downloader
                 }
                 else
                 {
-                    Console.WriteLine("[YDDL] No VPN Detected, Canceling Download!...");
+                    Console.WriteLine("[VDDL] No VPN Detected, Canceling Download!...");
                 }
             }
             else
@@ -665,8 +665,8 @@ namespace Video_Downloader
             string output = textOutput.Text;
             if (output == "")
             {
-                Console.WriteLine("[YDDL] No Output Directory Found...");
-                MessageBox.Show("[YDDL] Please Select an Output Location");
+                Console.WriteLine("[VDDL] No Output Directory Found...");
+                MessageBox.Show("[VDDL] Please Select an Output Location");
                 return;
             }
             if (mp3_check.IsChecked ?? true)
@@ -674,7 +674,7 @@ namespace Video_Downloader
                 if (cookie != "")
                 {
                     string ALL = System.IO.Path.Combine(cmdFull + " --format mp3" + " --cookies " + cookie + " --output " + output + " " + "-a " + BatTXT);
-                    Console.WriteLine("[YDDL] Executing Batch Command: " + ALL);
+                    Console.WriteLine("[VDDL] Executing Batch Command: " + ALL);
                     Process p = new Process();
                     p.StartInfo.FileName = cmdFull;
                     p.StartInfo.Arguments = "-x --audio-format mp3" + " --cookies " + cookie + " --output " + output + " " + "-a " + BatTXT;
@@ -694,7 +694,7 @@ namespace Video_Downloader
                 {
                     //-x --audio-format
                     string Mp3a = System.IO.Path.Combine(cmdFull + " --format mp3" + " --output " + output + " " + "-a " + BatTXT);
-                    Console.WriteLine("[YDDL] Executing Batch Command: " + Mp3a);
+                    Console.WriteLine("[VDDL] Executing Batch Command: " + Mp3a);
                     Process pa = new Process();
                     pa.StartInfo.FileName = cmdFull;
                     pa.StartInfo.Arguments = "-x --audio-format mp3" + " --output " + output + " " + "-a " + BatTXT;
@@ -714,7 +714,7 @@ namespace Video_Downloader
             else if (cookie != "")
             {
                 string CookOut = System.IO.Path.Combine(cmdFull + " --cookies " + cookie + " --output " + output + " " + "-a " + BatTXT);
-                Console.WriteLine("[YDDL] Executing Batch Command: " + CookOut);
+                Console.WriteLine("[VDDL] Executing Batch Command: " + CookOut);
                 Process pas = new Process();
                 pas.StartInfo.FileName = cmdFull;
                 pas.StartInfo.Arguments = "--cookies " + cookie + " --output " + output + " " + "-a " + BatTXT;
@@ -733,7 +733,7 @@ namespace Video_Downloader
             else
             {
                 string Out = System.IO.Path.Combine(cmdFull + " --output " + output + " " + "-a " + BatTXT);
-                Console.WriteLine("[YDDL] Executing Batch Command: " + Out);
+                Console.WriteLine("[VDDL] Executing Batch Command: " + Out);
                 Process pass = new Process();
                 pass.StartInfo.FileName = cmdFull;
                 pass.StartInfo.Arguments = "--output " + output + " " + "-a " + BatTXT;
@@ -773,7 +773,7 @@ namespace Video_Downloader
             {
                 if (new FileInfo(BatTXT).Length <= 2)
                 {
-                    Console.WriteLine("[YDDL] Batch List is Empty...");
+                    Console.WriteLine("[VDDL] Batch List is Empty...");
                 }
                 else
                 {
@@ -781,18 +781,18 @@ namespace Video_Downloader
                     {
                         Directory.CreateDirectory(prgCMD);
                         File.Copy(BatTXT, fileDes);
-                        Console.WriteLine("[YDDL] Saved Batch List at: " + fileDes);
+                        Console.WriteLine("[VDDL] Saved Batch List at: " + fileDes);
                     }
                     else
                     {
                         File.Copy(BatTXT, fileDes);
-                        Console.WriteLine("[YDDL] Saved Batch List at: " + fileDes);
+                        Console.WriteLine("[VDDL] Saved Batch List at: " + fileDes);
                     }
                 }
             }
             else
             {
-                Console.WriteLine("[YDDL] Batchdown.txt does not exist...");
+                Console.WriteLine("[VDDL] Batchdown.txt does not exist...");
             }
             
         }
@@ -805,7 +805,7 @@ namespace Video_Downloader
             var readmeTXT = filePath + @"\readme.txt";
             File.Delete(commonbugsTXT);
             File.Delete(readmeTXT);
-            Console.WriteLine("[YDDL] Calling Downloader...");
+            Console.WriteLine("[VDDL] Calling Downloader...");
             InitializeDownload();
 
         }
