@@ -56,5 +56,5 @@ If the value is set to "true" no caps, then that feature will be enabled, anythi
 Currently that is the only way to change the config. (Subject to change next update)
 
 ## Preview
-![a](https://https://github.com/Noonc/Noon-Video-Downloader/blob/master/Preview.jpg?raw=true)
+![a](https://https://github.com/Noonc/Noon-Video-Downloader/blob/master/Preview.jpg)
 
