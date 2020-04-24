@@ -3,7 +3,7 @@
 ## Add
 - Add Config Editor
 
-## Change
-
+## Fix/Change
+- Fix playlist download output folder bug (can't have spaces in output directory)
 ## Remove
 

@@ -1,7 +1,7 @@
 # Noon-Video-Downloader
 A GUI for the Youtube-DL library, using the .NET Framework.
 
-My first real program that uses Youtube-DL to make an easy to use GUI.
+My first real program that uses [Youtube-DL](https://github.com/ytdl-org/youtube-dl) to make an easy to use GUI.
 
 Currently the functions are basic, nothing more than mp4 or mp3 download. 
 
