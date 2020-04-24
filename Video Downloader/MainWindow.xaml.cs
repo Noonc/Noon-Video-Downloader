@@ -103,7 +103,7 @@ namespace Video_Downloader
             var filePath = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl");
             var fileLOG = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\logs\");
             Console.WriteLine("[VDDL] Checking for all required files...");
-            vrs_lbl.Content = "1.5.3";
+            vrs_lbl.Content = "1.3.3";
             if (Directory.Exists(filePath) & Directory.Exists(fileLOG) & File.Exists(filePath + @"\youtube-dl.exe") & File.Exists(filePath + @"\ffmpeg.exe") & File.Exists(filePath + @"\common-bugs.txt"))
             {
                 Console.WriteLine("[VDDL] All Necessary Files Found...");
