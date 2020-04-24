@@ -1,0 +1,43 @@
+﻿<Window x:Class="Video_Downloader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Video_Downloader"
+        mc:Ignorable="d"
+        Closing="Window_Closing"
+        Title="Noon's Video Downloader" Height="500" Width="1084" WindowStyle="ThreeDBorderWindow" Icon="icon.ico">
+
+    <Grid>
+        <TextBox x:Name="txtConsole" HorizontalAlignment="Left" Height="331" Text="" IsReadOnly ="True" TextWrapping="Wrap" VerticalAlignment="Top" Width="654" Background="Black" Foreground="White" Margin="73,96,0,0" Opacity="0.7"/>
+        <Button x:Name="but_SD" Content="Start Download" HorizontalAlignment="Left" Height="19" Margin="636,28,0,0" VerticalAlignment="Top" Width="91" Click="but_SD_Click"/>
+        <TextBox x:Name="tb_URL" HorizontalAlignment="Left" Height="19" Margin="72,28,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="547" MouseDoubleClick="tb_URL_doub"/>
+        <Button x:Name="but_outputset" Content="Output" HorizontalAlignment="Left" Margin="72,57,0,0" VerticalAlignment="Top" Width="106" Click="but_outputset_Click"/>
+        <Button x:Name="but_cookieset" Content="Cookies" HorizontalAlignment="Left" Margin="197,57,0,0" VerticalAlignment="Top" Width="109" RenderTransformOrigin="0.498,0.631" Click="but_cookieset_Click"/>
+        <TextBox x:Name="cmdlab" Text="Label" HorizontalAlignment="Left" Margin="23,377,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <TextBox x:Name="textCookie" Text="Label" HorizontalAlignment="Left" Margin="23,377,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <TextBox x:Name="textOutput" Text="Label" HorizontalAlignment="Left" Margin="23,377,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <TextBox x:Name="textOutputF" Text="" HorizontalAlignment="Left" Margin="23,377,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <TextBox x:Name="labelname_tb" HorizontalAlignment="Left" Height="18" Margin="72,10,0,0" Text="URL" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" IsReadOnly="True" Opacity="0.8" BorderThickness="0.1,0.1,0.1,0.1"/>
+        <CheckBox x:Name="mp3_check" Content="MP3" HorizontalAlignment="Left" Margin="324,59,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="CookieDir" Content="Cookies File Name Has to be Numbers and/or Letters" HorizontalAlignment="Left" Height="29" Margin="330,71,0,0" VerticalAlignment="Top" Width="342"/>
+        <Label x:Name="out_lb" Content="Output Location" HorizontalAlignment="Left" Height="30" Margin="73,71,0,0" VerticalAlignment="Top" Width="343"/>
+        <Button x:Name="OutFolder" Content="Open Output" HorizontalAlignment="Left" Height="20" Margin="73,432,0,0" VerticalAlignment="Top" Width="92" Click="Button_Click"/>
+        <Button x:Name="logC_bt" Content="Create Log" HorizontalAlignment="Left" Margin="658,432,0,0" VerticalAlignment="Top" Width="69" Click="logC_bt_Click"/>
+        <Button x:Name="open_LogDir" Content="Open Logs Folder" HorizontalAlignment="Left" Margin="542,432,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.631,-0.299" Width="111" Click="open_LogDir_Click"/>
+        <Button x:Name="open_LogBugs" Content="Open Bugs TXT" HorizontalAlignment="Left" Margin="442,432,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.631,-0.299" Width="95" Click="open_LogBug_Click"/>
+        <Button x:Name="open_YDDLData" Content="Open Program Files" HorizontalAlignment="Left" Margin="320,432,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.631,-0.299" Width="117" Click="open_YDDLData_Click"/>
+        <Button x:Name="Add_Butt" Content="Add" HorizontalAlignment="Left" Margin="1008,28,0,0" VerticalAlignment="Top" Width="45" Height="18" Click="Add_Butt_Click"/>
+        <TextBox x:Name="Add_TXT" HorizontalAlignment="Left" Margin="785,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218"/>
+        <Label Content="Batch Download" HorizontalAlignment="Left" Margin="785,6,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.474,-0.037"/>
+        <TextBox x:Name="OutBat_TXT" HorizontalAlignment="Left" Margin="785,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Height="331" Background="#FFC79E9E" IsReadOnly="True"/>
+        <Button x:Name="Down_Butt_Batch" Content="Download" HorizontalAlignment="Left" Margin="995,52,0,0" VerticalAlignment="Top" Width="58" Height="18" Click="Down_Butt_Batch_Click"/>
+        <Button x:Name="Clear_Bat_Butt" Content="Clear" HorizontalAlignment="Left" Margin="940,52,0,0" VerticalAlignment="Top" Height="18" Width="50" Click="Clear_Bat_Butt_Click"/>
+        <Label x:Name="vpn_lbl" Content="" HorizontalAlignment="Left" Margin="636,71,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.486,-0.237" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Width="90"/>
+        <Label Content="Batch Download List" HorizontalAlignment="Left" Margin="785,70,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="saveBat_Butt" Content="Save Batch File" HorizontalAlignment="Left" Margin="785,432,0,0" VerticalAlignment="Top" Width="88" Click="saveBat_Butt_Click"/>
+        <Label x:Name="vrs_lbl" Content="" HorizontalAlignment="Left" Margin="1030,432,0,0" VerticalAlignment="Top" IsEnabled="True" Visibility="Visible"/>
+        <Button x:Name="up_prg_btt" Content="Update Program Files" HorizontalAlignment="Left" Margin="197,432,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.515,0.117" Width="118" Click="up_prg_btt_Click"/>
+        <Button x:Name="ip_butt" Content="Check IP" HorizontalAlignment="Left" Margin="658,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.101,0.303" Height="18" Click="ip_butt_Click"/>
+    </Grid>
+</Window>
