@@ -28,29 +28,31 @@ Make sure you use the correct download button, there are two. One for the "norma
 When you enter a link to the batch list your link will be added to the list and you will see the red box fill up. 
 You also have the option to save that batch file.
 On shutdown, the batch list is cleared and will not save. 
-
+```
+## VPN
 If you are using a vpn, upon launch you will be 'notified' of your current IP. 
 This has only been tested with NordVPN, however. 
 If your vpn uses a local IP starting with 10, it will 'detect' a vpn. 
+
+## Bugs and Errors
 Any bugs or errors can first be refered to the common-bugs.txt, a shortcut to that exists at the bottom of the window. 
 
 Any 'Error:' messages without the prefix '[YDDL]' should be researched according to youtube-dl. 
 
-
+## Config
 Currently there are two config options: Autolog and CheckIP.
 Autolog creates a log everytime you close the application.
 CheckIP prevents you from downloading unless you are using a VPN. Please note this is not 100% accurate, and depends on many factors including your current IP.
 By default, Autolog is on and CheckIP is not.
 
+## Saves and Logs
 To access logs and batch saves, there is a button on the bottom of the application or you can navigate to C:\Users\User\Appdata\Roaming\vddl
-
 To access the config file, navigate to your install directory. 
 Find the file 'Video Downloader.dll.config' and edit it with notepad or any other text editor. 
 Note, you must have admin permissions to edit the file.
 Be careful not to mess up the layout of the document, not removing any characters. 
 If the value is set to "true" no caps, then that feature will be enabled, anything else will act as "false" (Eg. "a", "false" "no")
 Currently that is the only way to change the config. (Subject to change next update)
-```
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
