@@ -805,10 +805,10 @@ namespace Video_Downloader
             var pathWithEnv = @"%USERPROFILE%\Appdata\roaming";
             var logPath = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\logs\");
             DirectoryInfo dirInf = new DirectoryInfo(logPath);
-            Console.WriteLine("[VDDL] Deleting all Logs...");
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete ALL logs?", "Delete Logs", MessageBoxButton.YesNo);
             if(result == MessageBoxResult.Yes)
             {
+                Console.WriteLine("[VDDL] Deleting all Logs...");
                 foreach (FileInfo files in dirInf.GetFiles())
                 {
                     files.Delete();
@@ -818,7 +818,7 @@ namespace Video_Downloader
             }
             else
             {
-                Console.WriteLine("[VDDL] Cancled Log Deletion");
+                Console.WriteLine("[VDDL] Canceling Log Deletion...");
             }
         }
     }
