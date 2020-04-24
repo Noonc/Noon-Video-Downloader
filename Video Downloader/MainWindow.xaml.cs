@@ -54,6 +54,22 @@ namespace Video_Downloader
             var ipChk = ConfigurationManager.AppSettings["checkip"];
             Console.WriteLine(String.Format("[CONFIG] Autolog set to: '{0}'", autoLg));
             Console.WriteLine(String.Format("[CONFIG] IP-Check set to: '{0}'", ipChk));
+            if (autoLg == "true")
+            {
+                autoCheck_Box.IsChecked = true;
+            }
+            else
+            {
+                autoCheck_Box.IsChecked = false;
+            }
+            if (ipChk == "true")
+            {
+                ip_checkbox.IsChecked = true;
+            }
+            else
+            {
+                ip_checkbox.IsChecked = false;
+            }
         }
 
         private void InitializeIP()
@@ -87,7 +103,7 @@ namespace Video_Downloader
             var filePath = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl");
             var fileLOG = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\logs\");
             Console.WriteLine("[VDDL] Checking for all required files...");
-            vrs_lbl.Content = "1.0.0";
+            vrs_lbl.Content = "1.5.3";
             if (Directory.Exists(filePath) & Directory.Exists(fileLOG) & File.Exists(filePath + @"\youtube-dl.exe") & File.Exists(filePath + @"\ffmpeg.exe") & File.Exists(filePath + @"\common-bugs.txt"))
             {
                 Console.WriteLine("[VDDL] All Necessary Files Found...");
@@ -165,7 +181,7 @@ namespace Video_Downloader
                 string fileame = filePath + @"\common-bugs.txt";
                 if (!Directory.Exists(filePath) || !File.Exists(filePath + @"\youtube-dl.exe") || !File.Exists(filePath + @"\ffmpeg.exe") || !File.Exists(filePath + @"\phantomjs.exe"))
                 {
-                    Console.WriteLine("[VDDL] Executing First Time Setup...");
+                    Console.WriteLine("[VDDL] Starting Download and Install...");
                     Directory.CreateDirectory(filePath);
                     webClient.DownloadFile("https://yt-dl.org/latest/youtube-dl.exe", filePath + "/youtube-dl.exe");
                     webClient.DownloadFile("https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-latest-win64-static.zip", filePath + "/ffmpeg.zip");
@@ -242,22 +258,7 @@ namespace Video_Downloader
 
         public void InitializeDebug()
         {
-            Console.WriteLine("[VDDL] Starting Routine Debug...");
-            //var pathWithEnv = @"%USERPROFILE%\Appdata\roaming";
-            //var filePath = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\");
-            //string fileName = filePath + "common-bugs.txt";
-            //if (!File.Exists(fileName))
-            //{
-            //    File.AppendAllText(fileName, "These are the common-bugs of the downloader. \n If a download fails please reference this in your troubleshooting, or search yt-dl (youtube-dl) and your problem/error online. \n If the downloader fails to get the title, either one, you need to update by performing the -u command under youtube-dl.exe, or two, your cookie file is invalid. Simply create a new one and reload it. \n If the error is related to authentication, make sure you have permission to view the link you are trying to download.");
-            //    if (File.Exists(fileName))
-            //    {
-            //        Console.WriteLine("All Debug TXT's Created...");
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Debug TXT's Failed to Create...");
-            //    }
-            //}
+            //Console.WriteLine("[VDDL] Starting Routine Debug...");
             Console.WriteLine("[VDDL] Checking for Youtube-DL Update...");
             Process update = new Process();
             update.StartInfo.FileName = cmdlab.Text;
@@ -320,15 +321,25 @@ namespace Video_Downloader
                 MessageBox.Show("[VDDL] Please Select an Output Location");
                 return;
             }
-            if (mp3_check.IsChecked ?? true)
+            if (format_box.Text != "Default")
             {
                 if (cookie != "")
                 {
-                    string ALL = System.IO.Path.Combine(cmdFull + " --format mp3" + " --cookies " + cookie + " --output " + output + " " + URL);
+                    string ForArgs = "";
+                    string Format = format_box.Text.ToLower();
+                    if (Format == "mp3")
+                    {
+                        ForArgs = "-x --audio-format mp3";
+                    }
+                    else if (Format == "mp4")
+                    {
+                        ForArgs = "-f bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best";
+                    }
+                    string ALL = System.IO.Path.Combine(cmdFull + " --format " + Format + " --cookies " + cookie + " --output " + output + " " + URL);
                     Console.WriteLine("[VDDL] Executing Command: " + ALL);
                     Process p = new Process();
                     p.StartInfo.FileName = cmdFull;
-                    p.StartInfo.Arguments = "-x --audio-format mp3" + " --cookies " + cookie + " --output " + output + " " + URL;
+                    p.StartInfo.Arguments = ForArgs + " --cookies " + cookie + " --output " + output + " " + URL;
                     p.StartInfo.UseShellExecute = false;
                     p.StartInfo.RedirectStandardOutput = true;
                     p.StartInfo.RedirectStandardError = true;
@@ -343,12 +354,21 @@ namespace Video_Downloader
                 }
                 else
                 {
-                    //-x --audio-format
-                    string Mp3a = System.IO.Path.Combine(cmdFull + " --format mp3" + " --output " + output + " " + URL);
+                    string ForArgs = "";
+                    string Format = format_box.Text.ToLower();
+                    if (Format == "mp3")
+                    {
+                        ForArgs = "-x --audio-format mp3";
+                    }
+                    else if (Format == "mp4")
+                    {
+                        ForArgs = "-f bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best";
+                    }
+                    string Mp3a = System.IO.Path.Combine(cmdFull + " --format " + Format + " --output " + output + " " + URL);
                     Console.WriteLine("[VDDL] Executing Command: " + Mp3a);
                     Process pa = new Process();
                     pa.StartInfo.FileName = cmdFull;
-                    pa.StartInfo.Arguments = "-x --audio-format mp3" + " --output " + output + " " + URL;
+                    pa.StartInfo.Arguments = ForArgs + " --output " + output + " " + URL;
                     pa.StartInfo.UseShellExecute = false;
                     pa.StartInfo.RedirectStandardOutput = true;
                     pa.StartInfo.RedirectStandardError = true;
@@ -403,7 +423,6 @@ namespace Video_Downloader
 
             }
         }
-
         private void proc_ErrorDataRecieved(object sender, DataReceivedEventArgs e)
         {
             this.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
@@ -656,15 +675,25 @@ namespace Video_Downloader
                 MessageBox.Show("[VDDL] Please Select an Output Location");
                 return;
             }
-            if (mp3_check.IsChecked ?? true)
+            if (format_box.Text != "default")
             {
                 if (cookie != "")
                 {
-                    string ALL = System.IO.Path.Combine(cmdFull + " --format mp3" + " --cookies " + cookie + " --output " + output + " " + "-a " + BatTXT);
+                    string ForArgs = "";
+                    string Format = format_box.Text.ToLower();
+                    if (Format == "mp3")
+                    {
+                        ForArgs = "-x --audio-format mp3";
+                    }
+                    else if (Format == "mp4")
+                    {
+                        ForArgs = "-f bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best";
+                    }
+                    string ALL = System.IO.Path.Combine(cmdFull + " --format " + Format + " --cookies " + cookie + " --output " + output + " " + "-a " + BatTXT);
                     Console.WriteLine("[VDDL] Executing Batch Command: " + ALL);
                     Process p = new Process();
                     p.StartInfo.FileName = cmdFull;
-                    p.StartInfo.Arguments = "-x --audio-format mp3" + " --cookies " + cookie + " --output " + output + " " + "-a " + BatTXT;
+                    p.StartInfo.Arguments = ForArgs + " --cookies " + cookie + " --output " + output + " " + "-a " + BatTXT;
                     p.StartInfo.UseShellExecute = false;
                     p.StartInfo.RedirectStandardOutput = true;
                     p.StartInfo.RedirectStandardError = true;
@@ -679,12 +708,21 @@ namespace Video_Downloader
                 }
                 else
                 {
-                    //-x --audio-format
-                    string Mp3a = System.IO.Path.Combine(cmdFull + " --format mp3" + " --output " + output + " " + "-a " + BatTXT);
+                    string ForArgs = "";
+                    string Format = format_box.Text.ToLower();
+                    if (Format == "mp3")
+                    {
+                        ForArgs = "-x --audio-format mp3";
+                    }
+                    else if (Format == "mp4")
+                    {
+                        ForArgs = "-f bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best";
+                    }
+                    string Mp3a = System.IO.Path.Combine(cmdFull + " --format " + Format + " --output " + output + " " + "-a " + BatTXT);
                     Console.WriteLine("[VDDL] Executing Batch Command: " + Mp3a);
                     Process pa = new Process();
                     pa.StartInfo.FileName = cmdFull;
-                    pa.StartInfo.Arguments = "-x --audio-format mp3" + " --output " + output + " " + "-a " + BatTXT;
+                    pa.StartInfo.Arguments = ForArgs + " --output " + output + " " + "-a " + BatTXT;
                     pa.StartInfo.UseShellExecute = false;
                     pa.StartInfo.RedirectStandardOutput = true;
                     pa.StartInfo.RedirectStandardError = true;
@@ -820,6 +858,52 @@ namespace Video_Downloader
             {
                 Console.WriteLine("[VDDL] Canceling Log Deletion...");
             }
+        }
+
+        private void autoCheck_Box_Checked(object sender, RoutedEventArgs e)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var autoLg = ConfigurationManager.AppSettings["autolog"];
+            if(autoCheck_Box.IsChecked ?? true)
+            {
+                config.AppSettings.Settings["autolog"].Value = "true";
+                config.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection("appSettings");
+                Console.WriteLine("[VDDL] Autolog turned ON...");
+            }
+        }
+
+        private void ip_checkbox_Checked(object sender, RoutedEventArgs e)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var ipChk = ConfigurationManager.AppSettings["checkip"];
+            if (ip_checkbox.IsChecked ?? true)
+            {
+                config.AppSettings.Settings["checkip"].Value = "true";
+                config.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection("appSettings");
+                Console.WriteLine("[VDDL] CheckIP turned ON...");
+            }
+        }
+
+        private void autoCheck_Box_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var autoLg = ConfigurationManager.AppSettings["autolog"];
+            config.AppSettings.Settings["autolog"].Value = "false";
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+            Console.WriteLine("[VDDL] Autolog turned OFF...");
+        }
+
+        private void ip_checkbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var ipChk = ConfigurationManager.AppSettings["checkip"];
+            config.AppSettings.Settings["checkip"].Value = "false";
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+            Console.WriteLine("[VDDL] CheckIP turned OFF...");
         }
     }
 

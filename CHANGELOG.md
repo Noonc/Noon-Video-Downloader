@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+- Cleaned up Console Logs
+- Added Config Editor
+- Added Combobox with more formats
 
 ## [1.0.0] - 2020-04-24
 First Offical Release

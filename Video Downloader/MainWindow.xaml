@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Video_Downloader"
         mc:Ignorable="d"
         Closing="Window_Closing"
-        Title="Noon's Video Downloader" Height="500" Width="1084" WindowStyle="ThreeDBorderWindow" Icon="icon.ico">
+        Title="Noon's Video Downloader" Height="500" Width="1100" WindowStyle="ThreeDBorderWindow" Icon="icon.ico">
 
     <Grid>
         <TextBox x:Name="txtConsole" HorizontalAlignment="Left" Height="331" Text="" IsReadOnly ="True" TextWrapping="Wrap" VerticalAlignment="Top" Width="654" Background="Black" Foreground="White" Margin="73,96,0,0" Opacity="0.7"/>
@@ -19,7 +19,6 @@
         <TextBox x:Name="textOutput" Text="Label" HorizontalAlignment="Left" Margin="23,377,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
         <TextBox x:Name="textOutputF" Text="" HorizontalAlignment="Left" Margin="23,377,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
         <TextBox x:Name="labelname_tb" HorizontalAlignment="Left" Height="18" Margin="72,10,0,0" Text="URL" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" IsReadOnly="True" Opacity="0.8" BorderThickness="0.1,0.1,0.1,0.1"/>
-        <CheckBox x:Name="mp3_check" Content="MP3" HorizontalAlignment="Left" Margin="324,59,0,0" VerticalAlignment="Top"/>
         <Label x:Name="CookieDir" Content="Cookies File Name Has to be Numbers and/or Letters" HorizontalAlignment="Left" Height="29" Margin="330,71,0,0" VerticalAlignment="Top" Width="342"/>
         <Label x:Name="out_lb" Content="Output Location" HorizontalAlignment="Left" Height="30" Margin="73,71,0,0" VerticalAlignment="Top" Width="343"/>
         <Button x:Name="OutFolder" Content="Open Output" HorizontalAlignment="Left" Height="20" Margin="73,432,0,0" VerticalAlignment="Top" Width="92" Click="Button_Click"/>
@@ -40,5 +39,12 @@
         <Button x:Name="up_prg_btt" Content="Update Program Files" HorizontalAlignment="Left" Margin="197,432,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.515,0.117" Width="118" Click="up_prg_btt_Click"/>
         <Button x:Name="ip_butt" Content="Check IP" HorizontalAlignment="Left" Margin="658,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.101,0.303" Height="18" Click="ip_butt_Click"/>
         <Button x:Name="clr_logs" Content="Delete Logs" HorizontalAlignment="Left" Margin="732,432,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0.503" Click="clr_logs_Click"/>
+        <CheckBox x:Name="autoCheck_Box" Content="Autolog" HorizontalAlignment="Left" Margin="1008,96,0,0" VerticalAlignment="Top" Checked="autoCheck_Box_Checked" Unchecked="autoCheck_Box_Unchecked"/>
+        <CheckBox x:Name="ip_checkbox" Content="CheckIP" HorizontalAlignment="Left" Margin="1008,116,0,0" VerticalAlignment="Top" Checked="ip_checkbox_Checked" Unchecked="ip_checkbox_Unchecked"/>
+        <ComboBox x:Name="format_box" HorizontalAlignment="Left" Margin="320,57,0,0" VerticalAlignment="Top" Width="80" Height="20" IsReadOnly="True" Visibility="Visible">
+            <ComboBoxItem IsSelected="True">Default</ComboBoxItem>
+            <ComboBoxItem>MP3</ComboBoxItem>
+            <ComboBoxItem>MP4</ComboBoxItem>
+        </ComboBox>
     </Grid>
 </Window>
