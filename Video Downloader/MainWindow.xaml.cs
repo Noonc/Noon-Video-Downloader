@@ -1,31 +1,20 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using Ookii.Dialogs.Wpf;
+using System;
 using System.Collections;
-using System.Collections.Generic;
+using System.ComponentModel;
+using System.Configuration;
+using System.Diagnostics;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
-using System.Text;
-using System.Threading;
+using System.Net;
+using System.Net.Sockets;
+using System.Reflection;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Net;
-using System.IO;
-using System.Diagnostics;
-using System.Reflection;
-using System.Security.Principal;
-using System.IO.Compression;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
-using Microsoft.Win32;
-using Ookii.Dialogs.Wpf;
-using System.Net.Sockets;
-using System.Configuration;
 using Path = System.IO.Path;
 
 namespace Video_Downloader
@@ -95,7 +84,7 @@ namespace Video_Downloader
                 Console.WriteLine("[VDDL] No VPN Detected...");
                 vpn_lbl.Content = "VPN Disabled?";
             }
-            
+
         }
 
         private void InitializeFinal()
@@ -117,7 +106,7 @@ namespace Video_Downloader
             }
 
         }
-        private void  tb_URL_doub(object sender, EventArgs eventArgs)
+        private void tb_URL_doub(object sender, EventArgs eventArgs)
         {
             var textBox = (TextBox)sender;
             textBox.SelectAll();
@@ -134,7 +123,7 @@ namespace Video_Downloader
 
         private void InitializeStart()
         {
-           
+
             _writer = new TextBoxStreamWriter(txtConsole);
             Console.SetOut(_writer);
             Console.WriteLine("[VDDL] Initalizing Start...");
@@ -284,10 +273,10 @@ namespace Video_Downloader
             }));
         }
 
-        private void but_SD_Click(object sender, RoutedEventArgs e)
+        private async void but_SD_Click(object sender, RoutedEventArgs e)
         {
             string checkIP = ConfigurationManager.AppSettings["checkip"];
-            if(checkIP == "true")
+            if (checkIP == "true")
             {
                 string localIP;
                 using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
@@ -307,9 +296,11 @@ namespace Video_Downloader
             }
             else
             {
-                StartDownload();
+               StartDownload();
+
             }
         }
+
         private void StartDownload()
         {
             string cmdFull = cmdlab.Text;
@@ -352,6 +343,8 @@ namespace Video_Downloader
                     p.Start();
                     p.BeginOutputReadLine();
                     p.BeginErrorReadLine();
+
+
                 }
                 else
                 {
@@ -420,7 +413,7 @@ namespace Video_Downloader
                 pass.Start();
                 pass.BeginOutputReadLine();
                 pass.BeginErrorReadLine();
-                //MessageBox.Show("Wait for the CMD Window to Close, then check output for file");
+
 
             }
         }
@@ -438,7 +431,7 @@ namespace Video_Downloader
 
         private void myProcess_Exited(object sender, System.EventArgs e)
         {
-            
+
             this.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
             new Action(
             delegate ()
@@ -458,7 +451,7 @@ namespace Video_Downloader
                 Console.WriteLine(e.Data);
                 txtConsole.ScrollToEnd();
             }));
-               
+
         }
 
         private void but_outputset_Click(object sender, RoutedEventArgs e)
@@ -525,7 +518,7 @@ namespace Video_Downloader
                 var pathWithEnvv = @"%USERPROFILE%\Appdata\roaming";
                 var fileTXTt = Environment.ExpandEnvironmentVariables(pathWithEnvv + @"\vddl\logs\");
                 string fileNamee = fileTXTt + dateTime + ".txt";
-                File.AppendAllText(fileNamee, txtConsole.Text);               
+                File.AppendAllText(fileNamee, txtConsole.Text);
             }
         }
 
@@ -617,7 +610,7 @@ namespace Video_Downloader
                 OutBat_TXT.AppendText("\n" + CaC + ": " + appTEXT);
                 File.AppendAllLines(fileTXT, BatchD.Cast<string>());
                 OutBat_TXT.ScrollToEnd();
-                   
+
             }
             else
             {
@@ -635,7 +628,7 @@ namespace Video_Downloader
             //Use this on download button, separte.
             //File.WriteAllLines(fileTXT, BatchD.Cast<string>());
         }
-        
+
         private void Down_Butt_Batch_Click(object sender, RoutedEventArgs e)
         {
             string checkIP = ConfigurationManager.AppSettings["checkip"];
@@ -661,7 +654,7 @@ namespace Video_Downloader
             {
                 StartBat();
             }
-            
+
         }
         private void StartBat()
         {
@@ -820,7 +813,7 @@ namespace Video_Downloader
             {
                 Console.WriteLine("[VDDL] Batchdown.txt does not exist...");
             }
-            
+
         }
 
         private void up_prg_btt_Click(object sender, RoutedEventArgs e)
@@ -845,7 +838,7 @@ namespace Video_Downloader
             var logPath = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\logs\");
             DirectoryInfo dirInf = new DirectoryInfo(logPath);
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete ALL logs?", "Delete Logs", MessageBoxButton.YesNo);
-            if(result == MessageBoxResult.Yes)
+            if (result == MessageBoxResult.Yes)
             {
                 Console.WriteLine("[VDDL] Deleting all Logs...");
                 foreach (FileInfo files in dirInf.GetFiles())
@@ -865,7 +858,7 @@ namespace Video_Downloader
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             var autoLg = ConfigurationManager.AppSettings["autolog"];
-            if(autoCheck_Box.IsChecked ?? true)
+            if (autoCheck_Box.IsChecked ?? true)
             {
                 config.AppSettings.Settings["autolog"].Value = "true";
                 config.Save(ConfigurationSaveMode.Modified);
