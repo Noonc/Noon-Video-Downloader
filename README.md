@@ -30,7 +30,7 @@ You also have the option to save that batch file.
 On shutdown, the batch list is cleared and will not save. 
 ```
 ## VPN
-If you are using a vpn, upon launch you will be 'notified' of your current IP. 
+If you are using a vpn, upon launch you will be 'notified' of your current IP and whether or not you are using a vpn. 
 This has only been tested with NordVPN, however. 
 If your vpn uses a local IP starting with 10, it will 'detect' a vpn. 
 
