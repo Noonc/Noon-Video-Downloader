@@ -25,6 +25,7 @@ using Microsoft.Win32;
 using Ookii.Dialogs.Wpf;
 using System.Net.Sockets;
 using System.Configuration;
+using Path = System.IO.Path;
 
 namespace Video_Downloader
 {
@@ -510,19 +511,29 @@ namespace Video_Downloader
 
         private void logC_bt_Click(object sender, RoutedEventArgs e)
         {
+            int count = 1;
             string dateTime = DateTime.Now.ToString("MM-dd-yyyy h-mm tt");
             var pathWithEnv = @"%USERPROFILE%\Appdata\roaming";
             var fileTXT = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\logs\");
             string fileName = fileTXT + dateTime + ".txt";
-            File.AppendAllText(fileName, txtConsole.Text);
             Console.WriteLine("[VDDL] Creating Log File at: " + fileName);
-            //if (!Directory.Exists(fileTXT))
-            //{
-            //    Directory.CreateDirectory(fileTXT);
-            //}
             if (!File.Exists(fileName))
             {
-                Console.WriteLine("[VDDL] Log Creation Failed...");
+                File.AppendAllText(fileName, txtConsole.Text);
+            }
+            else
+            {
+                string fileNameOnly = Path.GetFileNameWithoutExtension(fileName);
+                string extension = Path.GetExtension(fileName);
+                string path = Path.GetDirectoryName(fileName);
+                string newFullPath = fileName;
+
+                while (File.Exists(newFullPath))
+                {
+                    string tempFileName = string.Format("{0}({1})", fileNameOnly, count++);
+                    newFullPath = Path.Combine(path, tempFileName + extension);
+                }
+                File.AppendAllText(newFullPath, txtConsole.Text);
             }
         }
 
@@ -787,6 +798,28 @@ namespace Video_Downloader
         private void ip_butt_Click(object sender, RoutedEventArgs e)
         {
             InitializeIP();
+        }
+
+        private void clr_logs_Click(object sender, RoutedEventArgs e)
+        {
+            var pathWithEnv = @"%USERPROFILE%\Appdata\roaming";
+            var logPath = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\logs\");
+            DirectoryInfo dirInf = new DirectoryInfo(logPath);
+            Console.WriteLine("[VDDL] Deleting all Logs...");
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete ALL logs?", "Delete Logs", MessageBoxButton.YesNo);
+            if(result == MessageBoxResult.Yes)
+            {
+                foreach (FileInfo files in dirInf.GetFiles())
+                {
+                    files.Delete();
+                    Console.WriteLine("[VDDL] Log: " + files + " Deleted...");
+                }
+                Console.WriteLine("[VDDL] Deleted all Logs....");
+            }
+            else
+            {
+                Console.WriteLine("[VDDL] Cancled Log Deletion");
+            }
         }
     }
 

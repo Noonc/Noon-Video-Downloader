@@ -8,5 +8,10 @@ First Offical Release
 ### Added
 - Created log delete button
 - Added CHANGELOG.md
+
+### Changed
 - Changed console prefix from "[YDDL]" to "[VDDL]
+
+### Removed
+- Removed README.txt from Appdata
 

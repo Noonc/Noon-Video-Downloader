@@ -35,9 +35,10 @@
         <Button x:Name="Clear_Bat_Butt" Content="Clear" HorizontalAlignment="Left" Margin="940,52,0,0" VerticalAlignment="Top" Height="18" Width="50" Click="Clear_Bat_Butt_Click"/>
         <Label x:Name="vpn_lbl" Content="" HorizontalAlignment="Left" Margin="636,71,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.486,-0.237" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Width="90"/>
         <Label Content="Batch Download List" HorizontalAlignment="Left" Margin="785,70,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="saveBat_Butt" Content="Save Batch File" HorizontalAlignment="Left" Margin="785,432,0,0" VerticalAlignment="Top" Width="88" Click="saveBat_Butt_Click"/>
+        <Button x:Name="saveBat_Butt" Content="Save Batch File" HorizontalAlignment="Left" Margin="915,432,0,0" VerticalAlignment="Top" Width="88" Click="saveBat_Butt_Click"/>
         <Label x:Name="vrs_lbl" Content="" HorizontalAlignment="Left" Margin="1030,432,0,0" VerticalAlignment="Top" IsEnabled="True" Visibility="Visible"/>
         <Button x:Name="up_prg_btt" Content="Update Program Files" HorizontalAlignment="Left" Margin="197,432,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.515,0.117" Width="118" Click="up_prg_btt_Click"/>
         <Button x:Name="ip_butt" Content="Check IP" HorizontalAlignment="Left" Margin="658,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.101,0.303" Height="18" Click="ip_butt_Click"/>
+        <Button x:Name="clr_logs" Content="Delete Logs" HorizontalAlignment="Left" Margin="732,432,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0.503" Click="clr_logs_Click"/>
     </Grid>
 </Window>
