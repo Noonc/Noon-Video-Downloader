@@ -13,7 +13,7 @@ All bugs and issues should be refered to the common-bugs.txt either here in this
 - Navigate to the releases page or use this link [here](https://github.com/Noonc/Noon-Video-Downloader/releases)
 - Download the latest zip.
 - Open with Winrar, 7Zip or extract onto computer.
-- Then run "setup.exe"
+- Then run "setup.exe" (The file "Noon's Video Downloader.msi" must be in the same directory as the exe to install)
 
 ## Usage
 ```
