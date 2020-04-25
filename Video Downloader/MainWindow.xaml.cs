@@ -32,7 +32,7 @@ namespace Video_Downloader
 
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();  
             InitializeStart();
             InitializeCMD();
             InitializeFinal();
@@ -902,10 +902,6 @@ namespace Video_Downloader
             Console.WriteLine("[VDDL] CheckIP turned OFF...");
         }
 
-        private void opn_ext_Console_Click(object sender, RoutedEventArgs e)
-        {
-            ConsoleAllocator.Show();
-        }
     }
 
 }

@@ -46,6 +46,5 @@
             <ComboBoxItem>MP3</ComboBoxItem>
             <ComboBoxItem>MP4</ComboBoxItem>
         </ComboBox>
-        <Button x:Name="opn_ext_Console" Content="Ext Console" HorizontalAlignment="Left" Margin="803,432,0,0" VerticalAlignment="Top" Width="69" Click="opn_ext_Console_Click"/>
     </Grid>
 </Window>
