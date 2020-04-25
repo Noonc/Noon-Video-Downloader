@@ -12,6 +12,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Security.Principal;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,7 +38,6 @@ namespace Video_Downloader
             InitializeFinal();
             this.ResizeMode = ResizeMode.NoResize;
         }
-
         private void InitializeCFG()
         {
             var autoLg = ConfigurationManager.AppSettings["autolog"];
@@ -287,7 +287,7 @@ namespace Video_Downloader
                 }
                 if (localIP.StartsWith("10"))
                 {
-                    StartDownload();
+                    await StartDownload();
                 }
                 else
                 {
@@ -296,12 +296,12 @@ namespace Video_Downloader
             }
             else
             {
-               StartDownload();
+               await StartDownload();
 
             }
         }
 
-        private void StartDownload()
+        private async Task StartDownload()
         {
             string cmdFull = cmdlab.Text;
             string cookie = textCookie.Text;
@@ -436,6 +436,7 @@ namespace Video_Downloader
             new Action(
             delegate ()
             {
+                Thread.CurrentThread.IsBackground = true;
                 Console.WriteLine("[VDDL] DOWNLOAD COMPLETE...");
                 Console.WriteLine("\n[VDDL] CHECK OUTPUT DIRECTORY...");
                 txtConsole.ScrollToEnd();
@@ -448,6 +449,7 @@ namespace Video_Downloader
             new Action(
             delegate ()
             {
+                Thread.CurrentThread.IsBackground = true;
                 Console.WriteLine(e.Data);
                 txtConsole.ScrollToEnd();
             }));
@@ -898,6 +900,11 @@ namespace Video_Downloader
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
             Console.WriteLine("[VDDL] CheckIP turned OFF...");
+        }
+
+        private void opn_ext_Console_Click(object sender, RoutedEventArgs e)
+        {
+            ConsoleAllocator.Show();
         }
     }
 
