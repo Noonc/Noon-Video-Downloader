@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Video Downloader", "Video Downloader\Video Downloader.csproj", "{6E6658D6-346E-444A-A641-14545225B0F8}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Noon's Video Downloader", "Noon's Video Downloader\Noon's Video Downloader.vdproj", "{289FB3FB-A546-4A7C-9954-AFEE8C0BBE1B}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Noons Video Downloader", "Noons Video Downloader\Noons Video Downloader.vdproj", "{075BA8B5-A378-4749-92CF-3CF76D17DA66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,12 +29,13 @@ Global
 		{6E6658D6-346E-444A-A641-14545225B0F8}.Release|x64.Build.0 = Release|x64
 		{6E6658D6-346E-444A-A641-14545225B0F8}.Release|x86.ActiveCfg = Release|x86
 		{6E6658D6-346E-444A-A641-14545225B0F8}.Release|x86.Build.0 = Release|x86
-		{289FB3FB-A546-4A7C-9954-AFEE8C0BBE1B}.Debug|Any CPU.ActiveCfg = Release
-		{289FB3FB-A546-4A7C-9954-AFEE8C0BBE1B}.Debug|x64.ActiveCfg = Debug
-		{289FB3FB-A546-4A7C-9954-AFEE8C0BBE1B}.Debug|x86.ActiveCfg = Debug
-		{289FB3FB-A546-4A7C-9954-AFEE8C0BBE1B}.Release|Any CPU.ActiveCfg = Release
-		{289FB3FB-A546-4A7C-9954-AFEE8C0BBE1B}.Release|x64.ActiveCfg = Release
-		{289FB3FB-A546-4A7C-9954-AFEE8C0BBE1B}.Release|x86.ActiveCfg = Release
+		{075BA8B5-A378-4749-92CF-3CF76D17DA66}.Debug|Any CPU.ActiveCfg = Debug
+		{075BA8B5-A378-4749-92CF-3CF76D17DA66}.Debug|x64.ActiveCfg = Debug
+		{075BA8B5-A378-4749-92CF-3CF76D17DA66}.Debug|x86.ActiveCfg = Release
+		{075BA8B5-A378-4749-92CF-3CF76D17DA66}.Debug|x86.Build.0 = Release
+		{075BA8B5-A378-4749-92CF-3CF76D17DA66}.Release|Any CPU.ActiveCfg = Release
+		{075BA8B5-A378-4749-92CF-3CF76D17DA66}.Release|x64.ActiveCfg = Release
+		{075BA8B5-A378-4749-92CF-3CF76D17DA66}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

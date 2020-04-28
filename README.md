@@ -20,6 +20,9 @@ All bugs and issues should be refered to the common-bugs.txt either here in this
 
 ## Usage
 ```
+- To run, open the "Noon's Video Downloader" Shortcut.
+- Or, you can run the "Video Downloader.exe" as admin found in your install location (Default: C:\Program Files (x86)\Noon\Noons Video Downloader\)
+
 All you have to do is input the url in the top textboxt then select an ouput. 
 
 There are other options like cookies for privated links, and format options like MP3 (Only current format). 
