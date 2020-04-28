@@ -2,9 +2,18 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-- Cleaned up Console Logs
+
+
+
+## [1.3.3] - 2020-04-28
+Second Release
+### Added
 - Added Config Editor
 - Added Combobox with more formats
+
+### Removed
+- Cleaned up Console Logs
+- Cleaned up install location - removed dlls, etc
 
 ## [1.0.0] - 2020-04-24
 First Offical Release
