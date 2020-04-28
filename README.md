@@ -19,9 +19,9 @@ All bugs and issues should be refered to the common-bugs.txt either here in this
 - Then run "setup.exe" (The file "Noon's Video Downloader.msi" must be in the same directory as the exe to install)
 
 ## Usage
-```
 - To run, open the "Video Downloader.exe" **!Must be run as Admin!**. (v1.3.3)
-- I recommend creating a shortcut that runs as admin. [(Here's How)](https://raw.githubusercontent.com/Noonc/Noon-Video-Downloader/master/shortcut.gif)
+- I recommend creating a shortcut that runs as admin. [Here's How)](https://raw.githubusercontent.com/Noonc/Noon-Video-Downloader/master/shortcut.gif)
+```
 
 All you have to do is input the url in the top textboxt then select an ouput. 
 
