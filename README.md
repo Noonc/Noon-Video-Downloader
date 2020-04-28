@@ -10,7 +10,7 @@ However, as time goes on, I will add more features.
 All bugs and issues should be refered to the common-bugs.txt either here in this repository or in the application.
 
 ## Preview
-![a](https://github.com/Noonc/Noon-Video-Downloader/blob/master/Preview.jpg)
+![a](https://raw.githubusercontent.com/Noonc/Noon-Video-Downloader/master/Previewv133.jpg)
 
 ## Installation
 - Navigate to the releases page or use this link [here](https://github.com/Noonc/Noon-Video-Downloader/releases)
@@ -19,9 +19,9 @@ All bugs and issues should be refered to the common-bugs.txt either here in this
 - Then run "setup.exe" (The file "Noon's Video Downloader.msi" must be in the same directory as the exe to install)
 
 ## Usage
+- To run, open the "Video Downloader.exe" **!Must be run as Admin!** (v1.3.3)
+- I recommend creating a shortcut that runs as admin. ([Here's How](https://raw.githubusercontent.com/Noonc/Noon-Video-Downloader/master/shortcut.gif))
 ```
-- To run, open the "Noon's Video Downloader" Shortcut.
-- Or, you can run the "Video Downloader.exe" as admin found in your install location (Default: C:\Program Files (x86)\Noon\Noons Video Downloader\)
 
 All you have to do is input the url in the top textboxt then select an ouput. 
 
@@ -58,6 +58,9 @@ By default, Autolog is on and CheckIP is not.
 ## Saves and Logs
 To access logs and batch saves, there is a button on the bottom of the application or you can navigate to C:\Users\User\Appdata\Roaming\vddl.
 
+
+## Editing Config
+**If you must edit the config (E.g, you are using v1.0.0) then follow these instructions**
 To access the config file, navigate to your install directory. 
 Find the file 'Video Downloader.dll.config' and edit it with notepad or any other text editor. 
 Note, you must have admin permissions to edit the file.
