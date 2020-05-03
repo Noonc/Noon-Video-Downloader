@@ -66,6 +66,5 @@ Find the file 'Video Downloader.dll.config' and edit it with notepad or any othe
 Note, you must have admin permissions to edit the file.
 Be careful not to mess up the layout of the document, not removing any characters. 
 If the value is set to "true" no caps, then that feature will be enabled, anything else will act as "false" (Eg. "a", "false" "no")
-Currently that is the only way to change the config. (Subject to change next update)
 
 
