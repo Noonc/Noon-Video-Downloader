@@ -296,15 +296,15 @@ namespace Video_Downloader
                 {
                     string ForArgs = "";
                     string Format = format_box.Text.ToLower();
-                    if (Format == "mp3")
+                    if (Format == "mp3" || Format == "ogg" || Format == "aac")
                     {
-                        ForArgs = "-x --audio-format mp3";
+                        ForArgs = "-x --audio-format " + Format;
                     }
-                    else if (Format == "mp4")
+                    else if (Format == "mp4" || Format == "mkv")
                     {
-                        ForArgs = "-f bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best";
+                        ForArgs = "-f bestvideo[ext=" + Format + "]+bestaudio[ext=m4a]/best[ext=mp4]/best";
                     }
-                    string ALL = System.IO.Path.Combine(cmdFull + " --format " + Format + " --cookies " + cookie + " --output " + output + " " + URL);
+                    string ALL = System.IO.Path.Combine(cmdFull + " " + ForArgs + " --cookies " + cookie + " --output " + output + " " + URL);
                     Console.WriteLine("[VDDL] Executing Command: " + ALL);
                     Process p = new Process();
                     p.StartInfo.FileName = cmdFull;
@@ -327,15 +327,15 @@ namespace Video_Downloader
                 {
                     string ForArgs = "";
                     string Format = format_box.Text.ToLower();
-                    if (Format == "mp3")
+                    if (Format == "mp3" || Format == "ogg" || Format == "aac")
                     {
-                        ForArgs = "-x --audio-format mp3";
+                        ForArgs = "-x --audio-format " + Format;
                     }
-                    else if (Format == "mp4")
+                    else if (Format == "mp4" || Format == "mkv")
                     {
-                        ForArgs = "-f bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best";
+                        ForArgs = "-f bestvideo[ext=" +Format+ "]+bestaudio[ext=m4a]/best[ext=mp4]/best";
                     }
-                    string Mp3a = System.IO.Path.Combine(cmdFull + " --format " + Format + " --output " + output + " " + URL);
+                    string Mp3a = System.IO.Path.Combine(cmdFull + " " + ForArgs + " --output " + output + " " + URL);
                     Console.WriteLine("[VDDL] Executing Command: " + Mp3a);
                     Process pa = new Process();
                     pa.StartInfo.FileName = cmdFull;
