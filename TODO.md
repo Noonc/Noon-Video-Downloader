@@ -3,6 +3,7 @@
 - Add batch file upload
 - More formats, combo box
 - Minimize Button
+- Remove item from Batch list option
 
 ## Fix/Change
 - Fix playlist download output folder bug (can't have spaces in output directory)
