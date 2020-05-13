@@ -10,7 +10,7 @@ However, as time goes on, I will add more features.
 All bugs and issues should be refered to the common-bugs.txt either here in this repository or in the application.
 
 ## Preview
-![a](https://raw.githubusercontent.com/Noonc/Noon-Video-Downloader/master/Previewv133.jpg)
+![a](https://raw.githubusercontent.com/Noonc/Noon-Video-Downloader/master/GitHubResources/Previewv133.jpg)
 
 ## Installation
 - Navigate to the releases page or use this link [here](https://github.com/Noonc/Noon-Video-Downloader/releases)
@@ -20,7 +20,7 @@ All bugs and issues should be refered to the common-bugs.txt either here in this
 
 ## Usage
 - To run, open the "Video Downloader.exe" **!Must be run as Admin!** (v1.3.3)
-- I recommend creating a shortcut that runs as admin. ([Here's How](https://raw.githubusercontent.com/Noonc/Noon-Video-Downloader/master/shortcut.gif))
+- I recommend creating a shortcut that runs as admin. ([Here's How](https://raw.githubusercontent.com/Noonc/Noon-Video-Downloader/master/GitHubResources/shortcut.gif))
 ```
 
 All you have to do is input the url in the top textboxt then select an ouput. 
@@ -66,6 +66,5 @@ Find the file 'Video Downloader.dll.config' and edit it with notepad or any othe
 Note, you must have admin permissions to edit the file.
 Be careful not to mess up the layout of the document, not removing any characters. 
 If the value is set to "true" no caps, then that feature will be enabled, anything else will act as "false" (Eg. "a", "false" "no")
-Currently that is the only way to change the config. (Subject to change next update)
 
 
