@@ -3,7 +3,18 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.6.3] - 2020-07-30
+Third Release
 
+### Added
+- Added minimize button
+- Added more formats (MP3, OPUS, AAC, MP4, MKV) for both Batch and Default download.
+
+### Changed
+- Added/fixed taskbar icon
+
+### Removed
+- Nothing
 
 ## [1.3.3] - 2020-04-28
 Second Release
