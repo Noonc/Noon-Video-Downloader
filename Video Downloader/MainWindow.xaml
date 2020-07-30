@@ -44,7 +44,7 @@
         <ComboBox x:Name="format_box" HorizontalAlignment="Left" Margin="320,57,0,0" VerticalAlignment="Top" Width="80" Height="20" IsReadOnly="True" Visibility="Visible">
             <ComboBoxItem IsSelected="True">Default</ComboBoxItem>
             <ComboBoxItem>MP3</ComboBoxItem>
-            <ComboBoxItem>OGG</ComboBoxItem>
+            <ComboBoxItem>OPUS</ComboBoxItem>
             <ComboBoxItem>AAC</ComboBoxItem>
             <ComboBoxItem>MP4</ComboBoxItem>
             <ComboBoxItem>MKV</ComboBoxItem>
