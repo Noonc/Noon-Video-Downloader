@@ -9,10 +9,11 @@ Any console message with the prefix "[VDDL]" is a VDDL error. Everything else sh
 - If the downloader is unable to extract the title your cookie file is invalid. Simply create a new one and reload it.
 - If the error is related to authentication, make sure you have permission to view the link you are trying to download.
 - (Playlist (not to confused with Batch Download) Download) If you get an error saying 'Cannot save audio and video on same file', this means you have a space in your output folder. I'm not sure why but it seems the output directory cannot have any spaces.
+- Output directory cannot have any spaces or special characters.
 
 
 ## Cookies
-- Cookies are needed for privated youtube videos, and anything that is block my a login.
+- Cookies are needed for privated youtube videos, and anything that is blocked by a login.
 - In order to create a proper cookie file, download any cookie plugin/addon for your browser. Then save the cookie file as a ".txt", the name doesn't matter.
 - Then depending on what site you are downloading from, make sure you are logged in to the correct account.
 
