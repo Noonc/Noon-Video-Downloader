@@ -17,9 +17,11 @@ All bugs and issues should be refered to the common-bugs.txt either here in this
 - Download the latest zip.
 - Open with Winrar, 7Zip or extract onto computer.
 - Then run "setup.exe" (The file "Noon's Video Downloader.msi" must be in the same directory as the exe to install)
+- If you are shown a ".NET Core" installation popup install that as well
 
 ## Usage
 - To run, open the "Video Downloader.exe" **!Must be run as Admin!** (v1.3.3)
+- To find the EXE file, the default install location is C:/Users/(user)/Program Files (x86)/Noon/Noons Video Downloader/
 - I recommend creating a shortcut that runs as admin. ([Here's How](https://raw.githubusercontent.com/Noonc/Noon-Video-Downloader/master/GitHubResources/shortcut.gif))
 ```
 
@@ -46,6 +48,8 @@ If your vpn uses a local IP starting with 10, it will 'detect' a vpn.
 
 ## Bugs and Errors
 Any bugs or errors can first be refered to the common-bugs.txt, a shortcut to that exists at the bottom of the window. 
+
+Bugs can also be refered to here: [Common Bugs](https://github.com/Noonc/Noon-Video-Downloader/blob/master/COMMON-BUGS.md)
 
 Any 'Error:' messages without the prefix '[YDDL]' should be researched according to youtube-dl. 
 

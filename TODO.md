@@ -3,6 +3,7 @@
 - Add batch file upload
 - More formats, combo box
 - Minimize Button
+- Add new formats to Batch download (Currently only MP4 and MP3)
 - Remove item from Batch list option (Array List?)
 
 ## Fix/Change
