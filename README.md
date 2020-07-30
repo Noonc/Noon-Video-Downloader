@@ -25,9 +25,10 @@ All bugs and issues should be refered to the common-bugs.txt either here in this
 - I recommend creating a shortcut that runs as admin. ([Here's How](https://raw.githubusercontent.com/Noonc/Noon-Video-Downloader/master/GitHubResources/shortcut.gif))
 ```
 
-All you have to do is input the url in the top textboxt then select an ouput. 
+All you have to do is input the url in the top textbox then select an ouput. 
+However, do not put any extra characters or phrases in the URL box.
 
-There are other options like cookies for privated links, and format options like MP3 (Only current format). 
+There are other options like cookies for privated links, and format options like MP3. 
 
 If you have multiple links to download (like a series) or an album, you can use the batch list. 
 If you have a youtube playlist, you can just use that url in the normal textbox. 
@@ -39,6 +40,10 @@ On shutdown, the batch list is cleared and will not save.
 
 In theory you can add custom youtube-dl arguments/parameters before the url in the urlbox. As long as there is a space before the URL it should download fine.
 However, this app is not designed to specifically work that way, so any errors or issues caused by that is mainly your problem/issue. (Or a youtube-dl issue)
+
+The output directory and format are needed and modify both default and batch downloads. So make sure you select the correct format. 
+If do not select a format, and "Default" is shown the downloader will attempt to save the video with the highest settings possible in mp4. (Note if MP4 is not available other formats may be used like MKV)
+Otherwise, if you wish to have a specific format, use the drop down menu. 
 
 ```
 ## VPN
