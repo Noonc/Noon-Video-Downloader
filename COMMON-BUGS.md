@@ -8,7 +8,7 @@ Any console message with the prefix "[VDDL]" is a VDDL error. Everything else sh
 ## Youtube-DL Bugs and Errors
 - If the downloader is unable to extract the title your cookie file is invalid. Simply create a new one and reload it.
 - If the error is related to authentication, make sure you have permission to view the link you are trying to download.
-- (Playlist (not to confused with Batch Download) Download) If you get an error saying 'Cannot save audio and video on same file', this means you have a space in you output folder. I'm not sure why but it seems the output directory cannot have any spaces.
+- (Playlist (not to confused with Batch Download) Download) If you get an error saying 'Cannot save audio and video on same file', this means you have a space in your output folder. I'm not sure why but it seems the output directory cannot have any spaces.
 
 
 ## Cookies
