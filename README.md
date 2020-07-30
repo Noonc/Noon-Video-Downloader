@@ -20,7 +20,7 @@ All bugs and issues should be refered to the common-bugs.txt either here in this
 - If you are shown a ".NET Core" installation popup install that as well
 
 ## Usage
-- To run, open the "Video Downloader.exe" **!Must be run as Admin!** (v1.3.3)
+- To run, open the "Video Downloader.exe" **!Must be run as Admin!** (v1.3.3 and beyond)
 - To find the EXE file, the default install location is C:/Users/(user)/Program Files (x86)/Noon/Noons Video Downloader/
 - I recommend creating a shortcut that runs as admin. ([Here's How](https://raw.githubusercontent.com/Noonc/Noon-Video-Downloader/master/GitHubResources/shortcut.gif))
 ```
