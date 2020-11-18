@@ -35,8 +35,9 @@ If you have a youtube playlist, you can just use that url in the normal textbox.
 Make sure you use the correct download button, there are two. One for the "normal" download/url box and a second for the batch list.
 
 When you enter a link to the batch list your link will be added to the list and you will see the red box fill up. 
-You also have the option to save that batch file.
-On shutdown, the batch list is cleared and will not save. 
+You also have the option to save that batch file. To import a batch save, use the import button.
+If you need to edit/delete an entry, you can manually edit the "batchdown.txt" file in the program files. (Located in appdata)
+This file is only available while the app is open. On shutdown, the batch list is cleared and will not save. 
 
 In theory you can add custom youtube-dl arguments/parameters before the url in the urlbox. As long as there is a space before the URL it should download fine.
 However, this app is not designed to specifically work that way, so any errors or issues caused by that is mainly your problem/issue. (Or a youtube-dl issue)
