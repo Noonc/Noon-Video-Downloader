@@ -13,7 +13,7 @@ Any console message with the prefix "[VDDL]" is a VDDL error. Everything else sh
 
 
 ## Cookies
-- Cookies are needed for privated youtube videos, and anything that is blocked by a login.
+- Cookies are needed for privated youtube videos, and anything that is blocked by a login or authentication.
 - In order to create a proper cookie file, download any cookie plugin/addon for your browser. Then save the cookie file as a ".txt", the name doesn't matter.
 - Then depending on what site you are downloading from, make sure you are logged in to the correct account.
 
