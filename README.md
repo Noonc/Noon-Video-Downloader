@@ -61,7 +61,7 @@ Any 'Error:' messages without the prefix '[YDDL]' should be researched according
 ## Config
 Currently there are two config options: Autolog and CheckIP.
 Autolog creates a log everytime you close the application.
-CheckIP prevents you from downloading unless you are using a VPN. Please note this is not 100% accurate, and depends on many factors including your current IP.
+CheckIP prevents you from downloading unless you are using a VPN. Please note this is not 100% accurate. I has worked for me many times, but has only been tested with NordVPN.
 By default, Autolog is on and CheckIP is not.
 
 ## Saves and Logs
