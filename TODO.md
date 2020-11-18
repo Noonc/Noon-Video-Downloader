@@ -1,6 +1,5 @@
 
 ## Add
-- Add batch file upload
 - Possibly more formats if there is a need
 - Remove item from Batch list option (Array List?)
 
