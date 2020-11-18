@@ -62,7 +62,7 @@ Any 'Error:' messages without the prefix '[YDDL]' should be researched according
 Currently there are two config options: Autolog and CheckIP.
 Autolog creates a log everytime you close the application.
 CheckIP prevents you from downloading unless you are using a VPN. Please note this is not 100% accurate. I has worked for me many times, but has only been tested with NordVPN.
-By default, Autolog is on and CheckIP is not.
+By default, Autolog is on and CheckIP is not. To turn these on or off, locate the two checkboxes inside the application on the righthand side. Checked means on, unchecked off. 
 
 ## Saves and Logs
 To access logs and batch saves, there is a button on the bottom of the application or you can navigate to C:\Users\User\Appdata\Roaming\vddl.
