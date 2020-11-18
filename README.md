@@ -42,7 +42,7 @@ In theory you can add custom youtube-dl arguments/parameters before the url in t
 However, this app is not designed to specifically work that way, so any errors or issues caused by that is mainly your problem/issue. (Or a youtube-dl issue)
 
 The output directory and format are needed and modify both default and batch downloads. So make sure you select the correct format. 
-If do not select a format, and "Default" is shown the downloader will attempt to save the video with the highest settings possible in mp4. (Note if MP4 is not available other formats may be used like MKV)
+If you do not select a format, and "Default" is shown the downloader will attempt to save the video with the highest settings possible in mp4. (Note if MP4 is not available other formats may be used like MKV)
 Otherwise, if you wish to have a specific format, use the drop down menu. 
 
 ```
