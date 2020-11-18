@@ -70,6 +70,7 @@ To access logs and batch saves, there is a button on the bottom of the applicati
 
 ## Editing Config
 **If you must edit the config (E.g, you are using v1.0.0) then follow these instructions**
+
 To access the config file, navigate to your install directory. 
 Find the file 'Video Downloader.dll.config' and edit it with notepad or any other text editor. 
 Note, you must have admin permissions to edit the file.
