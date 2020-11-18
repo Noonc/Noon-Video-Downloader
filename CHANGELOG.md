@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [1.6.4 - 2020-11-18]
 - Added Batch Upload/Import Button
 
 ## [1.6.3] - 2020-07-30
