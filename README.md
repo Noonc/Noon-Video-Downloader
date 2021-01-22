@@ -32,7 +32,7 @@ However, do not put any extra characters or phrases in the URL box.
 There are other options like cookies for privated links, and format options like MP3. 
 
 If you have multiple links to download (like a series) or an album, you can use the batch list. 
-If you have a youtube playlist, you can just use that url in the normal textbox. 
+If you have a youtube playlist, you can just use the playlist url in the normal textbox. 
 Make sure you use the correct download button, there are two. One for the "normal" download/url box and a second for the batch list.
 
 When you enter a link to the batch list your link will be added to the list and you will see the red box fill up. 
