@@ -26,7 +26,7 @@ All bugs and issues should be refered to the common-bugs.txt either here in this
 - You can also force the EXE file to run as admin by going to Properties > Compatibility > 'Run this program as an administrator'
 ```
 
-All you have to do is input the url in the top textbox then select an ouput. 
+All you have to do is input the url in the top textbox then select an output. 
 However, do not put any extra characters or phrases in the URL box.
 
 There are other options like cookies for privated links, and format options like MP3. 
