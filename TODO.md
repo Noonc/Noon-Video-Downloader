@@ -7,7 +7,6 @@
 - Fix playlist download output folder bug (can't have spaces in output directory)
 - Fix occasional freezing and tuttering
 - Fix app only launching in admin
-- Force 'Update Program Files' button to truly update by deleting and reinstalling dependencies. Not just checking for the existence of said files.
 - Add error bypass? to skip over parts of download if nessecary. 
 - Seperate download if statements (That way it can download missing files/dependencies without redownloading everything)
 
