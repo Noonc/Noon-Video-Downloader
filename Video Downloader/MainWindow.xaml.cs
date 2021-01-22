@@ -93,7 +93,7 @@ namespace Video_Downloader
             var filePath = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl");
             var fileLOG = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\logs\");
             Console.WriteLine("[VDDL] Checking for all required files...");
-            vrs_lbl.Content = "1.6.4";
+            vrs_lbl.Content = "1.7.0";
             if (Directory.Exists(filePath) & Directory.Exists(fileLOG) & File.Exists(filePath + @"\youtube-dl.exe") & File.Exists(filePath + @"\ffmpeg.exe") & File.Exists(filePath + @"\common-bugs.txt"))
             {
                 Console.WriteLine("[VDDL] All Necessary Files Found...");
@@ -151,14 +151,16 @@ namespace Video_Downloader
                     Console.WriteLine("[VDDL] Starting Download and Install...");
                     Directory.CreateDirectory(filePath);
                     webClient.DownloadFile("https://yt-dl.org/latest/youtube-dl.exe", filePath + "/youtube-dl.exe");
-                    webClient.DownloadFile("https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-latest-win64-static.zip", filePath + "/ffmpeg.zip");
+                    webClient.DownloadFile("https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip", filePath + "/ffmpeg.zip");
                     webClient.DownloadFile("https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-windows.zip", filePath + "/phantomjs.zip");
                     Console.Write("[VDDL] Download Complete \n[VDDL] Moving files to Correct Path...");
                     ZipFile.ExtractToDirectory(filePath + "/ffmpeg.zip", filePath);
                     ZipFile.ExtractToDirectory(filePath + "/phantomjs.zip", filePath);
                     File.Delete(filePath + "/ffmpeg.zip");
                     File.Delete(filePath + "/phantomjs.zip");
-                    string ffmpegexemove = filePath + "/ffmpeg-latest-win64-static/bin";
+                    string[] ffmpegbinpath = Directory.GetFiles(filePath, "ffmpeg.exe", SearchOption.AllDirectories);
+                    string ffmpegexetemp = String.Concat(ffmpegbinpath);
+                    string ffmpegexemove = ffmpegexetemp.Replace(@"\ffmpeg.exe", "");
                     string phantomjsexemove = filePath + "/phantomjs-2.1.1-windows/bin";
                     string target = filePath;
                     string[] files = System.IO.Directory.GetFiles(ffmpegexemove);
@@ -177,7 +179,7 @@ namespace Video_Downloader
                         string targetJ = System.IO.Path.Combine(target, fileName);
                         System.IO.File.Copy(s, targetJ, true);
                     }
-                    string ffzipfolder = filePath + "/ffmpeg-latest-win64-static";
+                    string ffzipfolder = ffmpegexemove.Replace(@"\bin", "");
                     string PJzipfolder = filePath + "/phantomjs-2.1.1-windows";
                     Directory.Delete(ffzipfolder, true);
                     Directory.Delete(PJzipfolder, true);
@@ -801,6 +803,10 @@ namespace Video_Downloader
             var filePath = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl");
             var commonbugsTXT = filePath + @"\common-bugs.txt";
             File.Delete(commonbugsTXT);
+            File.Delete(filePath + @"\ffmpeg.exe");
+            File.Delete(filePath + @"\ffplay.exe");
+            File.Delete(filePath + @"\ffprobe.exe");
+            File.Delete(filePath + @"\phantomjs.exe");
             Console.WriteLine("[VDDL] Calling Downloader...");
             InitializeDownload();
 
