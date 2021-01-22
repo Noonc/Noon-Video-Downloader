@@ -2,6 +2,8 @@
 ## Add
 - Possibly more formats if there is a need
 - Remove item from Batch list option (Array List?)
+- Desktop and Start Meny options on install
+- Make exe (or a shortcut) already have admin setting enabled 
 
 ## Fix/Change
 - Fix playlist download output folder bug (can't have spaces in output directory)
