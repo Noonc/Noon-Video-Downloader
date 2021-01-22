@@ -58,6 +58,7 @@ Any bugs or errors can first be refered to the common-bugs.txt, a shortcut to th
 This file is mainly for common issues you may encounter while using the app.
 
 For a more complete list of bugs, including installation issues, refer to here: [Common Bugs](https://github.com/Noonc/Noon-Video-Downloader/blob/master/COMMON-BUGS.md)
+
 This is where I will add all bugs, errors, and issues from now on regardless of their content.
 
 Any 'Error:' messages without the prefix '[YDDL]' should be researched according to youtube-dl. 
