@@ -49,5 +49,6 @@
             <ComboBoxItem>MP4</ComboBoxItem>
             <ComboBoxItem>MKV</ComboBoxItem>
         </ComboBox>
+        <Button x:Name ="but_importBatch" Content="Import" HorizontalAlignment="Left" Margin="886,52,0,0" VerticalAlignment="Top" Height="18" Width="49" Click="but_importBatch_Click"/>
     </Grid>
 </Window>

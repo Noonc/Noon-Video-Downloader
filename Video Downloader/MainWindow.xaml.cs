@@ -93,7 +93,7 @@ namespace Video_Downloader
             var filePath = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl");
             var fileLOG = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\logs\");
             Console.WriteLine("[VDDL] Checking for all required files...");
-            vrs_lbl.Content = "1.6.3";
+            vrs_lbl.Content = "1.6.4";
             if (Directory.Exists(filePath) & Directory.Exists(fileLOG) & File.Exists(filePath + @"\youtube-dl.exe") & File.Exists(filePath + @"\ffmpeg.exe") & File.Exists(filePath + @"\common-bugs.txt"))
             {
                 Console.WriteLine("[VDDL] All Necessary Files Found...");
@@ -877,6 +877,33 @@ namespace Video_Downloader
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
             Console.WriteLine("[VDDL] CheckIP turned OFF...");
+        }
+
+        private void but_importBatch_Click(object sender, RoutedEventArgs e)
+        {
+            var pathWithEnv = @"%USERPROFILE%\Appdata\roaming";
+            var fileTXT = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\batchdown.txt");
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.DefaultExt = ".txt";
+            openFileDialog.Filter = "Text documents (.txt)|*.txt";
+            Nullable<bool> result = openFileDialog.ShowDialog();
+            if (result == true)
+            {
+                string importLoc = openFileDialog.FileName;
+                Console.WriteLine(@"[VDDL] Batch File Imported: """ + importLoc + @"""...");
+                if(File.Exists(fileTXT))
+                {
+                    File.Delete(fileTXT);
+                    File.Copy(importLoc, fileTXT);
+                }
+                else
+                {
+                    File.Copy(importLoc, fileTXT);
+                }
+
+
+                OutBat_TXT.Text = File.ReadAllText(importLoc);
+            }
         }
     }
 
