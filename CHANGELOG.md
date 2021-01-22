@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+- Changed the common-bugs.txt content
+
 ## [1.7.0 - 2021-1-22]
 Fifth Release
 
