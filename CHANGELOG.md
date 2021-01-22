@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+- Changed the ffmpeg download source, as the previous shutdown.
 
 ## [1.6.4 - 2020-11-18]
 - Added Batch Upload/Import Button
