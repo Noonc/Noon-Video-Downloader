@@ -4,7 +4,7 @@ Any console message with the prefix "[VDDL]" is a VDDL error. Everything else sh
 
 ## Nothing happens at launch
 - When you first open the app, you will not see anything for 15-30 seconds. In the background the necessary files are being downloaded and installed. This will change based on your download speed. Typically this shouldn't take more than a minute though.
-- If the app fails to open even after a very long time, make sure you are opening it in admin. There is a tutorial [(here)](https://raw.githubusercontent.com/Noonc/Noon-Video-Downloader/master/GitHubResources/shortcut.gif) on how to create a shortcut to run as admin. alternatively you can also force the main exe to open as admin under Properties > Compatibility > "Run this program as an administrator". (In the future, I may allow the program to be run without admin. However, when I first coded it I ran into privledge problems and needed the right permissions to access %appdata% where most files are stored)
+- If the app fails to open even after a very long time, make sure you are opening it in admin. There is a tutorial [here](https://raw.githubusercontent.com/Noonc/Noon-Video-Downloader/master/GitHubResources/shortcut.gif) on how to create a shortcut to run as admin. alternatively you can also force the main exe to open as admin under Properties > Compatibility > "Run this program as an administrator". (In the future, I may allow the program to be run without admin. However, when I first coded it I ran into privledge problems and needed the right permissions to access %appdata% where most files are stored)
 
 
 ## Major Issue
