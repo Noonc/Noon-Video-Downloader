@@ -2,7 +2,14 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-- Changed the ffmpeg download source, as the previous shutdown.
+
+## [1.7.0 - 2021-1-22]
+Fifth Release
+
+### Changed
+- 'Update Program Files' button to truly update by deleting and reinstalling dependencies. Not just checking for the existence of said files.
+- Changed the ffmpeg download source, as the previous shutdown. (Caused app to fail to load/update)
+
 
 ## [1.6.4 - 2020-11-18]
 - Added Batch Upload/Import Button
