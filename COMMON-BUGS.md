@@ -2,6 +2,10 @@
 If a download fails please reference this in your troubleshooting, or search yt-dl [(youtube-dl)](https://github.com/ytdl-org/youtube-dl) and your problem/error online.
 Any console message with the prefix "[VDDL]" is a VDDL error. Everything else should be refered to youtube-dl.
 
+
+## Major Issue
+- Currently as of 1/22/2021, the ffmpeg download link used in all versions previous to 1.7.0 will crash on install. In order to fix this, you must either download the newer version, or manually download and import ffmpeg.exe to the program files folder. This will not affect you if you previously (as of Sep 18, 2020) installed the program.
+
 ## [VDDL] Bugs and Errors
 - If you get the error 'Log Directory does not exist', you must create a log first. (This should be fixed as of v1.0.0)
 
