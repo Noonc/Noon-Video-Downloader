@@ -55,8 +55,10 @@ If your vpn uses a local IP starting with 10, it will 'detect' a vpn.
 
 ## Bugs and Errors
 Any bugs or errors can first be refered to the common-bugs.txt, a shortcut to that exists at the bottom of the window. 
+This file is mainly for common issues you may encounter while using the app.
 
-Bugs can also be refered to here: [Common Bugs](https://github.com/Noonc/Noon-Video-Downloader/blob/master/COMMON-BUGS.md)
+For a more complete list of bugs, including installation issues, refer to here: [Common Bugs](https://github.com/Noonc/Noon-Video-Downloader/blob/master/COMMON-BUGS.md)
+This is where I will add all bugs, errors, and issues from now on regardless of their content.
 
 Any 'Error:' messages without the prefix '[YDDL]' should be researched according to youtube-dl. 
 
