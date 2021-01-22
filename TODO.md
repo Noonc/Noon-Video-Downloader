@@ -8,6 +8,7 @@
 - Fix occasional freezing and tuttering
 - Fix app only launching in admin
 - Force 'Update Program Files' button to truly update by deleting and reinstalling dependencies. Not just checking for the existence of said files.
+- Program Crashing on initial download and install of dependencies.
 
 ## Remove
 
