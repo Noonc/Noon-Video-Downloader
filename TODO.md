@@ -13,6 +13,7 @@
 - Add error bypass? to skip over parts of download if nessecary. 
 - Seperate download if statements (That way it can download missing files/dependencies without redownloading everything)
 - Make Import Batch FileDirectory default to batch saves folder.
+- Fix Batch Command Console entry, format shouldn't say default?
 
 ## Remove
 
