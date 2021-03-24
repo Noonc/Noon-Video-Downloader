@@ -10,7 +10,7 @@
 - Fix playlist download output folder bug (can't have spaces in output directory)
 - Fix occasional freezing and stuttering
 - Fix app only launching in admin
-- Add error bypass? to skip over parts of download if nessecary. 
+- Make error bypass/repair sequence only be executed a set number of times before quiting
 - Seperate download if statements (That way it can download missing files/dependencies without redownloading everything)
 - Make Import Batch FileDirectory default to batch saves folder.
 - Fix Batch Command Console entry, format shouldn't say default?
