@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+- Added Catch exceptions for download allowing for app to open even if correct files are not installed. 
 
 ### Changed
 - Changed the common-bugs.txt content
