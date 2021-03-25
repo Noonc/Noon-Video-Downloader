@@ -15,5 +15,8 @@
 - Make Import Batch FileDirectory default to batch saves folder.
 - Fix Batch Command Console entry, format shouldn't say default?
 
+
+- Start using Github branches instead of always commiting/pushing to master
+
 ## Remove
 
