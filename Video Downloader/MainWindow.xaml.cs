@@ -20,9 +20,6 @@ using Path = System.IO.Path;
 
 namespace Video_Downloader
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
 
@@ -38,6 +35,8 @@ namespace Video_Downloader
             InitializeFinal();
             this.ResizeMode = ResizeMode.CanMinimize;
         }
+
+        // Gets Config Values and Updates GUI Check Boxes
         private void InitializeCFG()
         {
             var autoLg = ConfigurationManager.AppSettings["autolog"];
@@ -62,6 +61,7 @@ namespace Video_Downloader
             }
         }
 
+        //Gets Local and Public IP - Checks for VPN
         private void InitializeIP()
         {
             string localIP;
@@ -71,9 +71,17 @@ namespace Video_Downloader
                 IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
                 localIP = endPoint.Address.ToString();
             }
-            string GetIp = new WebClient().DownloadString("http://icanhazip.com");
+            try
+            {
+                string GetIp = new WebClient().DownloadString("http://icanhazip.com"); 
+                Console.WriteLine("[VDDL] Current Public IP: " + GetIp + "[VDDL] Current Local IP: " + localIP);
+            }
+            catch (WebException getIpEx)
+            {
+                MessageBox.Show("Are you connected to the internet? Error: " + getIpEx.ToString());
+            }
             var Host = Dns.GetHostEntry(Dns.GetHostName());
-            Console.WriteLine("[VDDL] Current Public IP: " + GetIp + "[VDDL] Current Local IP: " + localIP);
+           
             if (localIP.StartsWith("10"))
             {
                 Console.WriteLine("[VDDL] Possible VPN Detected...");
@@ -93,7 +101,7 @@ namespace Video_Downloader
             var filePath = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl");
             var fileLOG = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\logs\");
             Console.WriteLine("[VDDL] Checking for all required files...");
-            vrs_lbl.Content = "1.7.0";
+            vrs_lbl.Content = "1.7.2";
             if (Directory.Exists(filePath) & Directory.Exists(fileLOG) & File.Exists(filePath + @"\youtube-dl.exe") & File.Exists(filePath + @"\ffmpeg.exe") & File.Exists(filePath + @"\common-bugs.txt"))
             {
                 Console.WriteLine("[VDDL] All Necessary Files Found...");
@@ -150,9 +158,43 @@ namespace Video_Downloader
                 {
                     Console.WriteLine("[VDDL] Starting Download and Install...");
                     Directory.CreateDirectory(filePath);
-                    webClient.DownloadFile("https://yt-dl.org/latest/youtube-dl.exe", filePath + "/youtube-dl.exe");
-                    webClient.DownloadFile("https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip", filePath + "/ffmpeg.zip");
-                    webClient.DownloadFile("https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-windows.zip", filePath + "/phantomjs.zip");
+                    try
+                    {
+                        webClient.DownloadFile("https://yt-dl.org/latest/youtube-dl.exe", filePath + "/youtube-dl.exe");
+                    }
+                    catch (WebException downYTDL)
+                    {
+                        MessageBox.Show("There was an error downloading youtube-dl. Please report on Github at https://github.com/Noonc/Noon-Video-Downloader/issues. \n Error: " + downYTDL.ToString());
+                        if (downYTDL.Status == WebExceptionStatus.ConnectFailure)
+                        {
+                            Console.WriteLine("[VDDL-Downloader] Could not establish connection to https://yt-dl.org/latest/youtube-dl.exe");
+                        }
+                    }
+                    try
+                    {
+                        webClient.DownloadFile("https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip", filePath + "/ffmpeg.zip");
+                    }
+                    catch (WebException downFFmpeg)
+                    {
+                        MessageBox.Show("There was an error downloading ffmpeg. Please report on Github at https://github.com/Noonc/Noon-Video-Downloader/issues. \n Error: " + downFFmpeg.ToString());
+                        if (downFFmpeg.Status == WebExceptionStatus.ConnectFailure)
+                        {
+                            Console.WriteLine("[VDDL-Downloader] Could not establish connection to https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip");
+                        }
+                    }
+                    try
+                    {
+                        webClient.DownloadFile("https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-windows.zip", filePath + "/phantomjs.zip");
+                    }
+                    catch (WebException downPhantom)
+                    {
+                        MessageBox.Show("There was an error downloading phantomjs. Please report on Github at https://github.com/Noonc/Noon-Video-Downloader/issues. \n Error: " + downPhantom.ToString());
+                        if (downPhantom.Status == WebExceptionStatus.ConnectFailure)
+                        {
+                            Console.WriteLine("[VDDL-Downloader] Could not establish connection to https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-windows.zip");
+                        }
+                        return;
+                    }
                     Console.Write("[VDDL] Download Complete \n[VDDL] Moving files to Correct Path...");
                     ZipFile.ExtractToDirectory(filePath + "/ffmpeg.zip", filePath);
                     ZipFile.ExtractToDirectory(filePath + "/phantomjs.zip", filePath);
@@ -189,6 +231,8 @@ namespace Video_Downloader
                 if (!File.Exists(fileame))
                 {
                     File.AppendAllText(fileame, "These are the common-bugs of the downloader. \n" +
+                        "For a more indepth version (and updated) go to the github page \n" +
+                        "https://github.com/Noonc/Noon-Video-Downloader/blob/master/COMMON-BUGS.md \n" +
                         "If a download fails please reference this in your troubleshooting, " +
                         "\nor search yt-dl (youtube-dl) and your problem/error online. \n" +
                         "Please note any console message without the prefix '[VDDL]' is all youtube-dl. \n" +
@@ -831,7 +875,7 @@ namespace Video_Downloader
                     files.Delete();
                     Console.WriteLine("[VDDL] Log: " + files + " Deleted...");
                 }
-                Console.WriteLine("[VDDL] Deleted all Logs....");
+                Console.WriteLine("[VDDL] Deleted all Logs...");
             }
             else
             {
@@ -910,6 +954,13 @@ namespace Video_Downloader
 
                 OutBat_TXT.Text = File.ReadAllText(importLoc);
             }
+        }
+
+        private void but_verifyFiles_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("[VDDL] Verifying Files... \n[VDDL] Calling InitFinal...");
+            InitializeFinal();
+            
         }
     }
 
