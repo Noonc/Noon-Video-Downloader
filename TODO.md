@@ -5,6 +5,7 @@
 - Desktop and Start Menu options on install
 - Make exe (or a shortcut) already have admin setting enabled 
 - Add --no-check-certificate button/option
+- Add an open console button (debug or something like that) to view console in real time if needed.
 
 ## Fix/Change
 - Fix playlist download output folder bug (can't have spaces in output directory)
