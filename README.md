@@ -8,6 +8,7 @@ Currently the functions are relatively basic, with a handfull of formats (Mp3, M
 However, as time goes on, I will add more features.
 
 All bugs and issues should be refered to the common-bugs.txt either here in this repository or in the application.
+Afterwards, open an issue here on Github.
 
 ## Preview
 ![a](https://raw.githubusercontent.com/Noonc/Noon-Video-Downloader/master/GitHubResources/Previewv133.jpg)
