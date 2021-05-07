@@ -63,7 +63,7 @@ For a more complete list of bugs, including installation issues, refer to here: 
 
 This is where I will add all bugs, errors, and issues from now on regardless of their content.
 
-Any 'Error:' messages without the prefix '[YDDL]' should be researched according to youtube-dl. 
+Any 'Error:' messages without the prefix '[VDDL]' should be researched according to youtube-dl. 
 
 ## Config
 Currently there are two config options: Autolog and CheckIP.
