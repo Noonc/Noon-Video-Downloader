@@ -20,6 +20,7 @@ Afterwards, open an issue here on Github.
 - Then run "setup.exe" (The file "Noon's Video Downloader.msi" must be in the same directory as the exe to install)
 - If you are shown a ".NET Core" installation popup install that as well
 - You also need the .NET Desktop Runtime installed, as well as the .NET Core (Make sure you install both!)
+- You may also need to install Visual C++ Redistributable 2015-2019
 
 ## Usage
 - To run, open the "Video Downloader.exe" **!Must be run as Admin!** (v1.3.3 and beyond)
