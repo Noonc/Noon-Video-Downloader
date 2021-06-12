@@ -16,6 +16,7 @@
 - Seperate download if statements (That way it can download missing files/dependencies without redownloading everything)
 - Make Import Batch FileDirectory default to batch saves folder.
 - Fix Batch Command Console entry, format shouldn't say default?
+- Change Default Install Location to be "Noonc" instead of "Noon"
 
 
 - Start using Github branches instead of always commiting/pushing to master
