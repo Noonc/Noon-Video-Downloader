@@ -2,6 +2,7 @@
 using Ookii.Dialogs.Wpf;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Diagnostics;
@@ -11,11 +12,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
+using System.Runtime.ConstrainedExecution;
 using System.Security.Principal;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using Path = System.IO.Path;
 
 namespace Video_Downloader
@@ -35,8 +38,9 @@ namespace Video_Downloader
             InitializeFinal();
             this.ResizeMode = ResizeMode.CanMinimize;
         }
-
-        // Gets Config Values and Updates GUI Check Boxes
+        /// <summary>
+        /// Gets Config Values and Updates GUI Check Boxes
+        /// </summary>
         private void InitializeCFG()
         {
             var autoLg = ConfigurationManager.AppSettings["autolog"];
@@ -61,7 +65,9 @@ namespace Video_Downloader
             }
         }
 
-        //Gets Local and Public IP - Checks for VPN
+        /// <summary>
+        /// Gets Local and Public IP - Checks for VPN
+        /// </summary>
         private void InitializeIP()
         {
             string localIP;
@@ -95,13 +101,16 @@ namespace Video_Downloader
 
         }
 
+        /// <summary>
+        /// Initializes Final Check fo all files including dependencies. 
+        /// </summary>
         private void InitializeFinal()
         {
             var pathWithEnv = @"%USERPROFILE%\Appdata\roaming";
             var filePath = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl");
             var fileLOG = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\logs\");
             Console.WriteLine("[VDDL] Checking for all required files...");
-            vrs_lbl.Content = "1.7.2";
+            vrs_lbl.Content = "1.8.4";
             if (Directory.Exists(filePath) & Directory.Exists(fileLOG) & File.Exists(filePath + @"\youtube-dl.exe") & File.Exists(filePath + @"\ffmpeg.exe") & File.Exists(filePath + @"\common-bugs.txt"))
             {
                 Console.WriteLine("[VDDL] All Necessary Files Found...");
@@ -111,6 +120,7 @@ namespace Video_Downloader
             {
                 Console.WriteLine("[VDDL] Some or all files not found... \n[VDDL] Initializing Repair...");
                 InitializeDownload();
+                MessageBox.Show("Installing and Downloading in the background. This will take some time depending on your internet/download speed. Be Patient!");
             }
 
         }
@@ -143,7 +153,7 @@ namespace Video_Downloader
             WindowsIdentity id = WindowsIdentity.GetCurrent();
             WindowsPrincipal principal = new WindowsPrincipal(id);
 
-            return principal.IsInRole(WindowsBuiltInRole.Administrator);
+            return principal.IsInRole(WindowsBuiltInRole.User);
         }
 
 
@@ -350,11 +360,11 @@ namespace Video_Downloader
                     {
                         ForArgs = "-f bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best --merge-output-format " + Format + " ";
                     }
-                    string ALL = System.IO.Path.Combine(cmdFull + " " + ForArgs + " --cookies " + cookie + " --output " + output + " " + URL);
+                    string ALL = System.IO.Path.Combine(cmdFull + " " + ForArgs + " --cookies " + cookie + " " + certCheckBox + " --output " + output + " " + URL);
                     Console.WriteLine("[VDDL] Executing Command: " + ALL);
                     Process p = new Process();
                     p.StartInfo.FileName = cmdFull;
-                    p.StartInfo.Arguments = ForArgs + " --cookies " + cookie + " --output " + output + " " + URL;
+                    p.StartInfo.Arguments = ForArgs + " --cookies " + cookie + " " + certCheckBox + " --output " + output + " " + URL;
                     p.StartInfo.UseShellExecute = false;
                     p.StartInfo.RedirectStandardOutput = true;
                     p.StartInfo.RedirectStandardError = true;
@@ -381,11 +391,11 @@ namespace Video_Downloader
                     {
                         ForArgs = "-f bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best --merge-output-format " + Format + " ";
                     }
-                    string Mp3a = System.IO.Path.Combine(cmdFull + " " + ForArgs + " --output " + output + " " + URL);
+                    string Mp3a = System.IO.Path.Combine(cmdFull + " " + ForArgs + " " + certCheckBox + " --output " + output + " " + URL);
                     Console.WriteLine("[VDDL] Executing Command: " + Mp3a);
                     Process pa = new Process();
                     pa.StartInfo.FileName = cmdFull;
-                    pa.StartInfo.Arguments = ForArgs + " --output " + output + " " + URL;
+                    pa.StartInfo.Arguments = ForArgs + " " + certCheckBox + " --output " + output + " " + URL;
                     pa.StartInfo.UseShellExecute = false;
                     pa.StartInfo.RedirectStandardOutput = true;
                     pa.StartInfo.RedirectStandardError = true;
@@ -401,11 +411,11 @@ namespace Video_Downloader
             }
             else if (cookie != "")
             {
-                string CookOut = System.IO.Path.Combine(cmdFull + " --cookies " + cookie + " --output " + output + " " + URL);
+                string CookOut = System.IO.Path.Combine(cmdFull + " --cookies " + cookie + " " + certCheckBox + " --output " + output + " " + URL);
                 Console.WriteLine("[VDDL] Executing Command: " + CookOut);
                 Process pas = new Process();
                 pas.StartInfo.FileName = cmdFull;
-                pas.StartInfo.Arguments = "--cookies " + cookie + " --output " + output + " " + URL;
+                pas.StartInfo.Arguments = "--cookies " + cookie + " " + certCheckBox + " --output " + output + " " + URL;
                 pas.StartInfo.UseShellExecute = false;
                 pas.StartInfo.RedirectStandardOutput = true;
                 pas.StartInfo.RedirectStandardError = true;
@@ -420,11 +430,11 @@ namespace Video_Downloader
             }
             else
             {
-                string Out = System.IO.Path.Combine(cmdFull + " --output " + output + " " + URL);
+                string Out = System.IO.Path.Combine(cmdFull + " " + certCheckBox + " --output " + output + " " + URL);
                 Console.WriteLine("[VDDL] Executing Command: " + Out);
                 Process pass = new Process();
                 pass.StartInfo.FileName = cmdFull;
-                pass.StartInfo.Arguments = "--output " + output + " " + URL;
+                pass.StartInfo.Arguments = " " + certCheckBox + " --output " + output + " " + URL;
                 pass.StartInfo.UseShellExecute = false;
                 pass.StartInfo.RedirectStandardOutput = true;
                 pass.StartInfo.RedirectStandardError = true;
@@ -708,11 +718,11 @@ namespace Video_Downloader
                     {
                         ForArgs = "-f bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best --merge-output-format " + Format + " ";
                     }
-                    string ALL = System.IO.Path.Combine(cmdFull + " --format " + Format + " --cookies " + cookie + " --output " + output + " " + "-a " + BatTXT);
+                    string ALL = System.IO.Path.Combine(cmdFull + " --format " + Format + " " + certCheckBox + " --cookies " + cookie + " --output " + output + " " + "-a " + BatTXT);
                     Console.WriteLine("[VDDL] Executing Batch Command: " + ALL);
                     Process p = new Process();
                     p.StartInfo.FileName = cmdFull;
-                    p.StartInfo.Arguments = ForArgs + " --cookies " + cookie + " --output " + output + " " + "-a " + BatTXT;
+                    p.StartInfo.Arguments = ForArgs + " --cookies " + cookie + " " + certCheckBox + " --output " + output + " " + "-a " + BatTXT;
                     p.StartInfo.UseShellExecute = false;
                     p.StartInfo.RedirectStandardOutput = true;
                     p.StartInfo.RedirectStandardError = true;
@@ -737,11 +747,11 @@ namespace Video_Downloader
                     {
                         ForArgs = "-f bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best --merge-output-format " + Format + " ";
                     }
-                    string Mp3a = System.IO.Path.Combine(cmdFull + " --format " + Format + " --output " + output + " " + "-a " + BatTXT);
+                    string Mp3a = System.IO.Path.Combine(cmdFull + " --format " + Format + " " + certCheckBox + " --output " + output + " " + "-a " + BatTXT);
                     Console.WriteLine("[VDDL] Executing Batch Command: " + Mp3a);
                     Process pa = new Process();
                     pa.StartInfo.FileName = cmdFull;
-                    pa.StartInfo.Arguments = ForArgs + " --output " + output + " " + "-a " + BatTXT;
+                    pa.StartInfo.Arguments = ForArgs + " " + certCheckBox + " --output " + output + " " + "-a " + BatTXT;
                     pa.StartInfo.UseShellExecute = false;
                     pa.StartInfo.RedirectStandardOutput = true;
                     pa.StartInfo.RedirectStandardError = true;
@@ -757,11 +767,11 @@ namespace Video_Downloader
             }
             else if (cookie != "")
             {
-                string CookOut = System.IO.Path.Combine(cmdFull + " --cookies " + cookie + " --output " + output + " " + "-a " + BatTXT);
+                string CookOut = System.IO.Path.Combine(cmdFull + " --cookies " + cookie + " " + certCheckBox + " --output " + output + " " + "-a " + BatTXT);
                 Console.WriteLine("[VDDL] Executing Batch Command: " + CookOut);
                 Process pas = new Process();
                 pas.StartInfo.FileName = cmdFull;
-                pas.StartInfo.Arguments = "--cookies " + cookie + " --output " + output + " " + "-a " + BatTXT;
+                pas.StartInfo.Arguments = "--cookies " + cookie + " " + certCheckBox  + " --output " + output + " " + "-a " + BatTXT;
                 pas.StartInfo.UseShellExecute = false;
                 pas.StartInfo.RedirectStandardOutput = true;
                 pas.StartInfo.RedirectStandardError = true;
@@ -776,11 +786,11 @@ namespace Video_Downloader
             }
             else
             {
-                string Out = System.IO.Path.Combine(cmdFull + " --output " + output + " " + "-a " + BatTXT);
+                string Out = System.IO.Path.Combine(cmdFull + " " + certCheckBox + " --output " + output + " " + "-a " + BatTXT);
                 Console.WriteLine("[VDDL] Executing Batch Command: " + Out);
                 Process pass = new Process();
                 pass.StartInfo.FileName = cmdFull;
-                pass.StartInfo.Arguments = "--output " + output + " " + "-a " + BatTXT;
+                pass.StartInfo.Arguments = " " + certCheckBox + " --output " + output + " " + "-a " + BatTXT;
                 pass.StartInfo.UseShellExecute = false;
                 pass.StartInfo.RedirectStandardOutput = true;
                 pass.StartInfo.RedirectStandardError = true;
@@ -961,6 +971,52 @@ namespace Video_Downloader
             Console.WriteLine("[VDDL] Verifying Files... \n[VDDL] Calling InitFinal...");
             InitializeFinal();
             
+        }
+        public string certCheckBox;
+        private void nOCheckCert_check_Checked(object sender, RoutedEventArgs e)
+        {
+            if (nOCheckCert_check.IsChecked == true)
+            {
+                certCheckBox = "--no-check-certificate";
+                Console.WriteLine("[VDDL] No Check Certificate Enabled...");
+            }
+            else
+            {
+                certCheckBox = null;
+            }
+        }
+
+        private void but_deleteBatchSingle_Click(object sender, RoutedEventArgs e)
+        {
+            int parseValue = -1;
+            if (string.IsNullOrEmpty(Add_TXT.Text))
+            {
+                MessageBox.Show("Please type number of the entry you would like to delete!");
+                Console.WriteLine("[VDDL] The Batch Textbox is null!");
+                return;
+            }
+            else if (!int.TryParse(Add_TXT.Text, out parseValue))
+            {
+                MessageBox.Show("The content in the textbox must be the number for the entry you wish to delete!");
+                Console.WriteLine("[VDDL] The Batch Textbox contains characters that are not numbers!");
+                return;
+            }
+
+            var pathWithEnv = @"%USERPROFILE%\Appdata\roaming";
+            var fileTXT = Environment.ExpandEnvironmentVariables(pathWithEnv + @"\vddl\batchdown.txt");
+
+            string[] fileRead = File.ReadAllLines(fileTXT);
+
+            List<string> fileLines = new List<string>(fileRead);
+
+            fileLines.RemoveAt(parseValue - 1);
+
+            string[] deletedFile = fileLines.ToArray();
+            File.WriteAllLines(fileTXT, deletedFile);
+
+            Console.WriteLine("[VDDL] Deleted entry: " + parseValue.ToString() + " from Batch Download list");
+            OutBat_TXT.Text = File.ReadAllText(fileTXT);
+
         }
     }
 

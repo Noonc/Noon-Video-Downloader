@@ -51,5 +51,7 @@
         </ComboBox>
         <Button x:Name ="but_importBatch" Content="Import" HorizontalAlignment="Left" Margin="886,52,0,0" VerticalAlignment="Top" Height="18" Width="49" Click="but_importBatch_Click"/>
         <Button x:Name="but_verifyFiles" Content="Verify Files" HorizontalAlignment="Left" Margin="804,432,0,0" VerticalAlignment="Top" Width="78" Click="but_verifyFiles_Click"/>
+        <CheckBox x:Name="nOCheckCert_check" Content="No-Check-Certificate" HorizontalAlignment="Left" Margin="416,59,0,0" VerticalAlignment="Top" Checked="nOCheckCert_check_Checked" />
+        <Button x:Name = "but_deleteBatchSingle" Content="Delete" HorizontalAlignment="Left" Margin="842,52,0,0" VerticalAlignment="Top" Click="but_deleteBatchSingle_Click" Height="18"/>
     </Grid>
 </Window>
