@@ -32,6 +32,7 @@ namespace Video_Downloader
 
         public MainWindow()
         {
+            IsRunAsAdmin();
             InitializeComponent();  
             InitializeStart();
             InitializeCMD();
