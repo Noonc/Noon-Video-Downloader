@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 - Added a Veryify Files button to simply check for required files.
 - Changed to YT-DLP (as Youtube-DL has been inactive)
 - Added a new no-check-certificate option.
+- Added a very rough delete option for batch download list
 
 ### Changed
 - Changed the common-bugs.txt content
