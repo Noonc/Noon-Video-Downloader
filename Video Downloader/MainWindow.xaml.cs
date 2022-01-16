@@ -70,12 +70,21 @@ namespace Video_Downloader
         /// </summary>
         private void InitializeIP()
         {
-            string localIP;
+            string localIP = "";
             using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
             {
-                socket.Connect("8.8.8.8", 65530);
-                IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
-                localIP = endPoint.Address.ToString();
+
+                try
+                {
+                    socket.Connect("8.8.8.8", 65530);
+                    IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
+                    localIP = endPoint.Address.ToString();
+                }
+                catch (WebException socketErrorWeb)
+                {
+                    Console.WriteLine("[VDDL] Error when trying to connect Socket. Message: " + socketErrorWeb.Message);
+                }
+                
             }
             try
             {
@@ -170,7 +179,9 @@ namespace Video_Downloader
                     Directory.CreateDirectory(filePath);
                     try
                     {
-                        webClient.DownloadFile("https://yt-dl.org/latest/youtube-dl.exe", filePath + "/youtube-dl.exe");
+                        //webClient.DownloadFile("https://yt-dl.org/latest/youtube-dl.exe", filePath + "/youtube-dl.exe");
+                        webClient.DownloadFile("https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe", filePath + "/youtube-dl.exe");
+                        
                     }
                     catch (WebException downYTDL)
                     {
@@ -281,19 +292,28 @@ namespace Video_Downloader
 
         public void InitializeDebug()
         {
-            //Console.WriteLine("[VDDL] Starting Routine Debug...");
-            Console.WriteLine("[VDDL] Checking for Youtube-DL Update...");
-            Process update = new Process();
-            update.StartInfo.FileName = cmdlab.Text;
-            update.StartInfo.Arguments = "--update";
-            update.StartInfo.UseShellExecute = false;
-            update.StartInfo.RedirectStandardOutput = true;
-            update.OutputDataReceived += proc_OutputDataRecieved;
-            update.StartInfo.CreateNoWindow = true;
-            update.EnableRaisingEvents = true;
-            update.Exited += new EventHandler(end_Debug);
-            update.Start();
-            update.BeginOutputReadLine();
+            try
+            {
+                //Console.WriteLine("[VDDL] Starting Routine Debug...");
+                Console.WriteLine("[VDDL] Checking for Youtube-DL Update...");
+                Process update = new Process();
+                update.StartInfo.FileName = cmdlab.Text;
+                update.StartInfo.Arguments = "--update";
+                update.StartInfo.UseShellExecute = false;
+                update.StartInfo.RedirectStandardOutput = true;
+                update.OutputDataReceived += proc_OutputDataRecieved;
+                update.StartInfo.CreateNoWindow = true;
+                update.EnableRaisingEvents = true;
+                update.Exited += new EventHandler(end_Debug);
+                update.Start();
+                update.BeginOutputReadLine();
+            }
+            catch (WebException ytdlDebugE)
+            {
+                Console.WriteLine("[VDDL] Web Exception. Error Message: " + ytdlDebugE.Message);
+                Console.WriteLine("[VDDL} Make sure you are connected to the internet...");
+                return;
+            }
         }
 
         private void end_Debug(object sender, EventArgs e)
