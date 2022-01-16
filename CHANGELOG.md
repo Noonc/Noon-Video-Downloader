@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Added Catch exceptions for download allowing for app to open even if correct files are not installed. 
 - Added a Veryify Files button to simply check for required files.
+- Changed to YT-DLP (as Youtube-DL has been inactive)
+- Added a new no-check-certificate option.
 
 ### Changed
 - Changed the common-bugs.txt content
