@@ -4,7 +4,6 @@
 - Remove item from Batch list option (Array List?)
 - Desktop and Start Menu options on install
 - Make exe (or a shortcut) already have admin setting enabled 
-- Add --no-check-certificate button/option
 - Add an open console button (debug or something like that) to view console in real time if needed.
 - Starting/Installing Window (Progress Bar)
 
