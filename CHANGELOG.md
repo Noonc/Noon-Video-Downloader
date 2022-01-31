@@ -1,7 +1,12 @@
 # CHANGELOG
 All notable changes to this project will be documented in this file.
 
-## [Unreleased] - Feature
+## [1.8.5 - Unreleased] - Feature
+
+### ADDED
+- Added a new config option to set default directory of downloads.
+
+## [1.8.4 - 2022-1-15] - Feature
 
 ### Added
 - Added Catch exceptions for download allowing for app to open even if correct files are not installed. 
